@@ -18,7 +18,6 @@ class _AstroCallState extends State<AstroCall> {
     {"images": "assets/images/astro.png", "title": "Web Design"},
     {"images": "assets/images/astro.png", "title": "App Design"},
     {"images": "assets/images/astro.png", "title": "App Design"},
-
   ];
   int selectedIndex = 1;
 
@@ -104,14 +103,11 @@ class _AstroCallState extends State<AstroCall> {
                               text: "Call",
                               buttontapped: () {
                                 Navigator.pushNamed(context, '/intakeform');
-                              }),
-
+                          }),
                     ),
-
                   ],
                 ),
               )
-
             ],
           ),
         ),

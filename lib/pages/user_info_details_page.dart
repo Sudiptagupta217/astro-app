@@ -99,8 +99,7 @@ class DetailsPageState extends State<DetailsPage> {
                           _selectedGender = value;
                         });
                       },
-                      activeColor:
-                          Color(0xFFFDCE2D), //FDCE2D Set the active color
+                      activeColor: Color(0xFFFDCE2D),
                     ),
                     SizedBox(width: 5),
                     Text(
@@ -222,8 +221,7 @@ class DetailsPageState extends State<DetailsPage> {
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Color(0x1AFFFFFF), width: 1),
+                      borderSide: BorderSide(color: Color(0x1AFFFFFF), width: 1),
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                     focusColor: Color(0xFFFFFFFF),
@@ -246,9 +244,9 @@ class DetailsPageState extends State<DetailsPage> {
                                 MediaQuery.of(context).size.width * 0.20,
                             vertical: 21),
                         elevation: 2,
-                        foregroundColor: Color(0xFF000000),
-                        backgroundColor: Color(0xFFFDCE2D)),
-                    child: Text(
+                        foregroundColor: const Color(0xFF000000),
+                        backgroundColor: const Color(0xFFFDCE2D)),
+                    child: const Text(
                       "Submit",
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
