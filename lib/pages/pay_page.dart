@@ -1,7 +1,10 @@
+import 'package:astro/widget/custom_button.dart';
+import 'package:astro/utils/default_colors.dart';
 import 'package:flutter/material.dart';
-
 import '../widget/buttom_manu.dart';
 import '../widget/drawer_manu.dart';
+import '../widget/pay_from_card.dart';
+import '../widget/pay_user_card.dart';
 
 class Pay extends StatefulWidget {
   const Pay({Key? key}) : super(key: key);
@@ -21,7 +24,7 @@ class PayState extends State<Pay> {
 
   @override
   Widget build(BuildContext context) {
-    var payid = [
+    var payId = [
       {'image': 'assets/images/profile.png', 'name': 'Jessica'},
       {'image': 'assets/images/profile1.png', 'name': 'Baker'},
       {'image': 'assets/images/profile2.png', 'name': 'Kevin'},
@@ -40,41 +43,37 @@ class PayState extends State<Pay> {
               .of(context)
               .size
               .width,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage("assets/images/bg.png"),
                   fit: BoxFit.cover)),
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 25),
-                margin: EdgeInsets.only(top: 60),
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                margin: const EdgeInsets.only(top: 60),
                 child: Row(
                   children: [
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).pop();
                       },
-                      child: Container(
-                        child: Icon(
-                          Icons.arrow_back_ios,
+                      child: const Icon(
+                        Icons.arrow_back_ios,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const Spacer(),
+                    const Text(
+                      "Pay",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
                           color: Colors.white,
-                        ),
-                      ),
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 0.5),
                     ),
-                    Spacer(),
-                    Container(
-                      child: Text(
-                        "Pay",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 0.5),
-                      ),
-                    ),
-                    Spacer(),
+                    const Spacer(),
                   ],
                 ),
               ),
@@ -83,9 +82,9 @@ class PayState extends State<Pay> {
                       .of(context)
                       .size
                       .width,
-                  margin: EdgeInsets.only(top: 30),
-                  padding: EdgeInsets.only(top: 30,),
-                  decoration: BoxDecoration(
+                  margin: const EdgeInsets.only(top: 30),
+                  padding: const EdgeInsets.only(top: 30,),
+                  decoration: const BoxDecoration(
                       color: Color(0xFFF8F8F9),
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(50.0),
@@ -93,7 +92,7 @@ class PayState extends State<Pay> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 20),
                         child: Text(
                           "From",
@@ -101,104 +100,27 @@ class PayState extends State<Pay> {
                               fontSize: 19, fontWeight: FontWeight.w600),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      SingleChildScrollView(
+                      const SingleChildScrollView(
                         padding: EdgeInsets.only(left: 20),
                         scrollDirection: Axis.horizontal,
                         child: Row(
                           children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius:
-                                BorderRadius.all(Radius.circular(20)),
-                                gradient: LinearGradient(
-                                    colors: [
-                                      Color(0xFF19387D),
-                                      Color(0xFF1C3C84)
-                                    ],
-                                    begin: const FractionalOffset(0.2, 1.0),
-                                    end: const FractionalOffset(1.5, 0.1),
-                                    stops: [0.0, 1.3],
-                                    tileMode: TileMode.clamp),
-                              ),
-                              height: 65,
-                              width: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .width * 0.7,
-                              child: Padding(
-                                padding: const EdgeInsets.all(12.0),
-                                child: Row(children: [
-                                  Text(
-                                    "wallet",
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.white),
-                                  ),
-                                  Spacer(),
-                                  Text(
-                                    '..2323',
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white),
-                                  )
-                                ]),
-                              ),
-                            ),
+                            PayFormCard(title: 'wallet', value: '..2341',),
                             SizedBox(
                               width: 15,
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                    colors: [
-                                      Color(0xFF1C3C84),
-                                      Color(0xFFC23335)
-                                    ],
-                                    begin: const FractionalOffset(0.2, 1.0),
-                                    end: const FractionalOffset(1.0, 0.1),
-                                    stops: [0.0, 1.3],
-                                    tileMode: TileMode.clamp),
-                                borderRadius:
-                                BorderRadius.all(Radius.circular(20)),
-                              ),
-                              height: 65,
-                              width: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .width * 0.7,
-                              child: Padding(
-                                padding: const EdgeInsets.all(12.0),
-                                child: Row(children: [
-                                  Text(
-                                    "Card",
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.white),
-                                  ),
-                                  Spacer(),
-                                  Text(
-                                    '..2323',
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white),
-                                  )
-                                ]),
-                              ),
-                            ),
+                            PayFormCard(title: 'Card', value: '..6789',),
+
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 20),
                         child: Text(
                           "To",
@@ -206,19 +128,19 @@ class PayState extends State<Pay> {
                               fontSize: 19, fontWeight: FontWeight.w600),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       SingleChildScrollView(
-                        padding: EdgeInsets.only(left: 20),
+                        padding: const EdgeInsets.only(left: 20),
                         scrollDirection: Axis.horizontal,
-                        child: Container(
-                          height: 75,
+                        child: SizedBox(
+                          height: 80,
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                margin: EdgeInsets.only(left: 5),
+                                margin: const EdgeInsets.only(left: 5),
                                 height: 55,
                                 width: 55,
                                 decoration: BoxDecoration(
@@ -227,84 +149,43 @@ class PayState extends State<Pay> {
                                     boxShadow: [
                                       BoxShadow(
                                         color: Colors.grey.shade300,
-                                        offset: Offset(-2, 2),
+                                        offset: const Offset(-2, 2),
                                         blurRadius: 5,
                                         spreadRadius: 0,
                                       )
                                     ]),
-                                child: Icon(
+                                child: const Icon(
                                   Icons.add,
                                   color: Colors.black87,
                                   size: 30,
                                 ),
                               ),
 
-                              SizedBox(
+                              const SizedBox(
                                 width: 8,
                               ),
 
 
                               ListView.builder(
                                 shrinkWrap: true,
-                                physics: BouncingScrollPhysics(),
+                                physics: const BouncingScrollPhysics(),
                                 itemBuilder: (context, index) {
-                                  return Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 8.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.center,
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          height: 55,
-                                          width: 55,
-                                          decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              color: Colors.white,
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  color: Colors.grey.shade300,
-                                                  offset: Offset(-2, 5),
-                                                  blurRadius: 5,
-                                                  spreadRadius: 0,
-                                                )
-                                              ]),
-                                          child: ClipRRect(
-                                              borderRadius:
-                                              BorderRadius.circular(50),
-                                              child: Image.asset(
-                                                payid[index]['image']!,
-                                                fit: BoxFit.fill,
-                                              )),
-                                        ),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Text(
-                                          payid[index]['name']!,
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              color: Color(0xff2F498C),
-                                              fontWeight: FontWeight.w600),
-                                        )
-                                      ],
-                                    ),
-                                  );
+                                  return PayUserCard(name: payId[index]["name"].toString(),
+                                   image: payId[index]["image"].toString());
                                 },
-                                itemCount: payid.length,
+                                itemCount: payId.length,
                                 scrollDirection: Axis.horizontal,
                               ),
                             ],
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.0),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -333,54 +214,49 @@ class PayState extends State<Pay> {
                           ],
                         ),
                       ),
-                      SizedBox(
+
+                      const SizedBox(
                         height: 10,
                       ),
+
                       Container(
-                        margin: EdgeInsets.symmetric(horizontal: 20),
+                        margin: const EdgeInsets.symmetric(horizontal: 20),
                         height: 55,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(30)),
                           color: Colors.white,
                         ),
                         child: TextFormField(
-                          style: TextStyle(color: Colors.black,
+                          style: const TextStyle(color: Colors.black,
                               fontWeight: FontWeight.w500,
                               fontSize: 20),
                           decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(30),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                       color: Colors.white, width: 1)),
                               enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(30),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                       color: Colors.white, width: 1)),
                               disabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(30),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                       color: Colors.white, width: 1)),
                               suffixText: "0.00",
-                              // suffixIcon: IconButton(
-                              //   icon: Icon(
-                              //     Icons.remove_red_eye,
-                              //     color: Colors.black,
-                              //   ),
-                              //   onPressed: () {},
-                              // ),
-                              prefixIcon: Icon(Icons.currency_rupee,
+                              prefixIcon: const Icon(Icons.currency_rupee,
                                   color: Color(0xff341A9D))),
                         ),
                       ),
 
-                      SizedBox(
+                      const SizedBox(
                         height: 25,
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20.0),
                         child: TextFormField(
                           maxLines:4,
-                          style: TextStyle(color: Colors.black,
+                          style: const TextStyle(color: Colors.black,
                               fontWeight: FontWeight.w500,
                               fontSize: 20),
                           decoration: InputDecoration(
@@ -388,18 +264,18 @@ class PayState extends State<Pay> {
                             fillColor: Colors.white,
                             focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(25),
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                     color: Colors.white, width: 1)),
                             enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(25),
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                     color: Colors.white, width: 1)),
                             disabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(25),
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                     color: Colors.white, width: 1)),
                             hintText: "Type note to party... ",
-                            hintStyle: TextStyle(fontSize: 14)
+                            hintStyle: const TextStyle(fontSize: 14)
                           ),
                         ),
                       ),
@@ -409,42 +285,26 @@ class PayState extends State<Pay> {
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            TextButton(
-                              onPressed: (){
-                                Navigator.pushNamed(context, '/home');
-                              },
-                              style: TextButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50),
-                                  ),
-                                  padding: EdgeInsets.symmetric(horizontal: 35, vertical: 14),
-                                  elevation: 2,
-                                  foregroundColor: Colors.white,
-                                  backgroundColor: Color(0xFF0341A9)
-                              ),
-                              child: Text("Send"),
-                            ),
 
-                            SizedBox(width: 5,),
-                            TextButton(
-                              onPressed: (){
-                                Navigator.pushNamed(context, '/home');
-                              },
-                              style: TextButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50),
-                                  ),
-                                  padding: EdgeInsets.symmetric(horizontal: 35, vertical: 14),
-                                  elevation: 0.1,
-                                  foregroundColor: Colors.black54,
-                                  backgroundColor: Colors.grey.shade100
-                              ),
-                              child: Text("Cancel"),
-                            ),
+                         CustomButton(title: "Send",
+                           padding: const EdgeInsets.symmetric(horizontal: 35,vertical: 11),
+                           backgroundColor: DefaultColor.blue,
+                           foregroundColor: DefaultColor.white,
+                           callback: () {
+
+                         },),
+
+                            const SizedBox(width: 5,),
+
+                            CustomButton(title: "Cancel",
+                              padding: const EdgeInsets.symmetric(horizontal: 25,vertical: 11),
+                              backgroundColor: DefaultColor.grey,
+                              foregroundColor: const Color(0xff4E4E4E),
+                              callback: () {
+                              },),
                           ],
                         ),
                       ),
-
                     ],
                   ))
             ],

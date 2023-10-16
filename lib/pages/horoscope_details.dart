@@ -16,11 +16,11 @@ class _HoroscopeDetailsState extends State<HoroscopeDetails> {
 
 
   List<Widget> myTabs = [
-    SizedBox(
+    const SizedBox(
       width: 20.0,
       child: Tab(text: 'hello'),
     ),
-    SizedBox(
+    const SizedBox(
       width: 70,
       child: Tab(text: 'world'),
     ),
@@ -50,7 +50,7 @@ class _HoroscopeDetailsState extends State<HoroscopeDetails> {
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.33,
 
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color(0xfffff9eb),
                 borderRadius:
                     BorderRadius.only(bottomRight: Radius.circular(50)),
@@ -74,16 +74,16 @@ class _HoroscopeDetailsState extends State<HoroscopeDetails> {
                     },
                     child: Container(
 
-                      padding: EdgeInsets.symmetric(horizontal: 25),
-                      margin: EdgeInsets.only(top: 50),
-                      child: Icon(
+                      padding: const EdgeInsets.symmetric(horizontal: 25),
+                      margin: const EdgeInsets.only(top: 50),
+                      child: const Icon(
                         Icons.arrow_back_ios,
                         color: Color(0xff000000),
                       ),
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 25),
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -93,8 +93,8 @@ class _HoroscopeDetailsState extends State<HoroscopeDetails> {
                           children: [
                             Text(
                               widget.name,
-                              style: TextStyle(
-                                  fontSize: 38, fontWeight: FontWeight.w700),
+                              style: const TextStyle(
+                                  fontSize: 35, fontWeight: FontWeight.w700),
                             ),
                             Text("09 Sep 1995")
                           ],
@@ -114,7 +114,7 @@ class _HoroscopeDetailsState extends State<HoroscopeDetails> {
             ),
 
 
-            SizedBox(height: 30,),
+            const SizedBox(height: 30,),
 
             DefaultTabController(
               length: 3,
@@ -125,10 +125,10 @@ class _HoroscopeDetailsState extends State<HoroscopeDetails> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Container(
+                    SizedBox(
                       width: MediaQuery.of(context).size.width * 0.75,
 
-                      child: TabBar(
+                      child: const TabBar(
                         tabs: <Widget>[
                           Tab(
                             child: Text("Today", style: TextStyle(color: Colors.black),),
@@ -143,14 +143,12 @@ class _HoroscopeDetailsState extends State<HoroscopeDetails> {
                         ],
                       ),
                     ),
-                    Expanded(
+                    const Expanded(
                       child: TabBarView(
                         children: <Widget>[
                           HoroscopeToday(),
                           HoroscopeToday(),
                           HoroscopeToday(),
-
-
 
                         ],
                       ),

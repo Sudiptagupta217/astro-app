@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../widget/buttom_manu.dart';
 import '../widget/drawer_manu.dart';
 
@@ -30,7 +28,6 @@ class _RecentTransactionsState extends State<RecentTransactions> {
       {'paymenttype': 'Payment from Fiverr', 'status': 'Completed', 'price': '\$50'},
       {'paymenttype': 'Payment from Fiverr', 'status': 'Completed', 'price': '\$50'},
       {'paymenttype': 'Payment from Fiverr', 'status': 'Completed', 'price': '\$50'},
-
     ];
 
     return Scaffold(

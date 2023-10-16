@@ -1,7 +1,9 @@
-import 'package:flutter/cupertino.dart';
+import 'package:astro/utils/default_colors.dart';
 import 'package:flutter/material.dart';
 
 class ShubhMuhuratDetails extends StatefulWidget {
+  const ShubhMuhuratDetails({super.key});
+
   @override
   State<StatefulWidget> createState() => ShubhMuhuratDetailsState();
 }
@@ -10,52 +12,49 @@ class ShubhMuhuratDetailsState extends State<ShubhMuhuratDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: DefaultColor.bg_color,
       body: SingleChildScrollView(
         child: Container(
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage("assets/images/bg.png"),
                   fit: BoxFit.cover)),
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 25),
-                margin: EdgeInsets.only(top: 60),
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                margin: const EdgeInsets.only(top: 60),
                 child: Row(
                   children: [
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).pop();
                       },
-                      child: Container(
-                        child: Icon(
-                          Icons.arrow_back_ios,
+                      child: const Icon(
+                        Icons.arrow_back_ios,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const Spacer(),
+                    const Text(
+                      "Shubh Muhurat Consultation",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
                           color: Colors.white,
-                        ),
-                      ),
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 0.5),
                     ),
-                    Spacer(),
-                    Container(
-                      child: Text(
-                        "Shubh Muhurat Consultation",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 0.5),
-                      ),
-                    ),
-                    Spacer(),
+                    const Spacer(),
                   ],
                 ),
               ),
               Container(
                 width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.only(top: 30),
-                decoration: BoxDecoration(
-                    color: Color(0xFFF8F8F9),
+                margin: const EdgeInsets.only(top: 30),
+                decoration: const BoxDecoration(
+                    color: DefaultColor.bg_color,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(50.0),
                     )),
@@ -63,7 +62,7 @@ class ShubhMuhuratDetailsState extends State<ShubhMuhuratDetails> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Color(0xFFFFF0BE),
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(50),
@@ -71,11 +70,11 @@ class ShubhMuhuratDetailsState extends State<ShubhMuhuratDetails> {
                         ),
                         width: MediaQuery.of(context).size.width,
                         //  margin: EdgeInsets.only(top: 30),
-                        padding: EdgeInsets.only(right: 20, left: 20, top: 27),
+                        padding: const EdgeInsets.only(right: 20, left: 20, top: 27),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            const Text(
                               " Shubh Muhurat Today",
                               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
                             ),
@@ -87,8 +86,8 @@ class ShubhMuhuratDetailsState extends State<ShubhMuhuratDetails> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Image.asset("assets/images/om.png"),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
+                                  const Padding(
+                                    padding: EdgeInsets.only(
                                         top: 12, left: 8, bottom: 8),
                                     child: Column(
                                       mainAxisAlignment:
@@ -128,11 +127,10 @@ class ShubhMuhuratDetailsState extends State<ShubhMuhuratDetails> {
                             )
                           ],
                         )),
-
                     Container(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                           right: 20, left: 20, top: 20, bottom: 20),
-                      child: Column(
+                      child: const Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(

@@ -15,12 +15,17 @@ class _DrawerManuState extends State<DrawerManu> {
     super.initState();
   }
 
+  void _navigateAndCloseDrawer(String routeName) {
+    Navigator.pop(context);
+    Navigator.pushNamed(context, routeName);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
       width: MediaQuery.of(context).size.width * 0.79,
-      backgroundColor: Color(0xff341A9D),
-      shape: OutlineInputBorder(
+      backgroundColor: const Color(0xff341A9D),
+      shape: const OutlineInputBorder(
         borderSide: BorderSide(color: Color(0xff341A9D)),
         borderRadius: BorderRadius.only(
           bottomRight: Radius.circular(40),
@@ -31,7 +36,7 @@ class _DrawerManuState extends State<DrawerManu> {
           DrawerHeader(
             child: InkWell(
               onTap: () {
-                Navigator.pushNamed(context, "/profile");
+                _navigateAndCloseDrawer("/profile");
               },
               child: Row(
                 children: [
@@ -43,8 +48,8 @@ class _DrawerManuState extends State<DrawerManu> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 10),
-                    child: Column(
+                    margin: const EdgeInsets.only(left: 10),
+                    child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -63,22 +68,20 @@ class _DrawerManuState extends State<DrawerManu> {
                       ],
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   InkWell(
                     onTap: () {
-                     Navigator.pushNamed(context, '/notification');
+                      _navigateAndCloseDrawer('/notification');
                     },
-                    child: Container(
-                      child: Stack(
-                        children: [
-                          Align(
-                              alignment: AlignmentDirectional.centerEnd,
-                              child: Icon(
-                                Icons.notifications_outlined,
-                                color: Color(_whitePrimaryValue),
-                              ))
-                        ],
-                      ),
+                    child: const Stack(
+                      children: [
+                        Align(
+                            alignment: AlignmentDirectional.centerEnd,
+                            child: Icon(
+                              Icons.notifications_outlined,
+                              color: Color(_whitePrimaryValue),
+                            ))
+                      ],
                     ),
                   )
                 ],
@@ -86,8 +89,8 @@ class _DrawerManuState extends State<DrawerManu> {
             ),
           ),
           ListTile(
-            title: Padding(
-              padding: const EdgeInsets.only(left: 25),
+            title: const Padding(
+              padding: EdgeInsets.only(left: 25),
               child: Text('Chat with Astrologer',
                   style: TextStyle(
                       fontSize: 16,
@@ -95,12 +98,12 @@ class _DrawerManuState extends State<DrawerManu> {
                       color: Color(_whitePrimaryValue))),
             ),
             onTap: () {
-              Navigator.pushNamed(context, "/astro_chat");
+              _navigateAndCloseDrawer("/astro_chat");
             },
           ),
           ListTile(
-            title: Padding(
-              padding: const EdgeInsets.only(left: 25),
+            title: const Padding(
+              padding: EdgeInsets.only(left: 25),
               child: Text('Call Your Astrologer',
                   style: TextStyle(
                       fontSize: 16,
@@ -108,12 +111,12 @@ class _DrawerManuState extends State<DrawerManu> {
                       color: Color(_whitePrimaryValue))),
             ),
             onTap: () {
-              Navigator.pushNamed(context, "/astro_call");
+              _navigateAndCloseDrawer("/astro_call");
             },
           ),
           ListTile(
-            title: Padding(
-              padding: const EdgeInsets.only(left: 25),
+            title: const Padding(
+              padding: EdgeInsets.only(left: 25),
               child: Text('Free Kundli',
                   style: TextStyle(
                       fontSize: 16,
@@ -121,12 +124,12 @@ class _DrawerManuState extends State<DrawerManu> {
                       color: Color(_whitePrimaryValue))),
             ),
             onTap: () {
-              Navigator.pushNamed(context, "/kundali");
+              _navigateAndCloseDrawer("/kundali");
             },
           ),
           ListTile(
-            title: Padding(
-              padding: const EdgeInsets.only(left: 25),
+            title: const Padding(
+              padding: EdgeInsets.only(left: 25),
               child: Text('History',
                   style: TextStyle(
                       fontSize: 16,
@@ -134,12 +137,12 @@ class _DrawerManuState extends State<DrawerManu> {
                       color: Color(_whitePrimaryValue))),
             ),
             onTap: () {
-              Navigator.pushNamed(context, "/history");
+              _navigateAndCloseDrawer("/history");
             },
           ),
           ListTile(
-            title: Padding(
-              padding: const EdgeInsets.only(left: 25),
+            title: const Padding(
+              padding: EdgeInsets.only(left: 25),
               child: Text('Detailed Report',
                   style: TextStyle(
                       fontSize: 16,
@@ -147,12 +150,12 @@ class _DrawerManuState extends State<DrawerManu> {
                       color: Color(_whitePrimaryValue))),
             ),
             onTap: () {
-              Navigator.pushNamed(context, "/home");
+              _navigateAndCloseDrawer("/home");
             },
           ),
           ListTile(
-            title: Padding(
-              padding: const EdgeInsets.only(left: 25),
+            title: const Padding(
+              padding: EdgeInsets.only(left: 25),
               child: Text('Planetary Transit',
                   style: TextStyle(
                       fontSize: 16,
@@ -160,12 +163,12 @@ class _DrawerManuState extends State<DrawerManu> {
                       color: Color(_whitePrimaryValue))),
             ),
             onTap: () {
-              Navigator.pushNamed(context, "/planetarytransit");
+              _navigateAndCloseDrawer("/planetarytransit");
             },
           ),
           ListTile(
-            title: Padding(
-              padding: const EdgeInsets.only(left: 25),
+            title: const Padding(
+              padding: EdgeInsets.only(left: 25),
               child: Text('Settings',
                   style: TextStyle(
                       fontSize: 16,
@@ -173,12 +176,12 @@ class _DrawerManuState extends State<DrawerManu> {
                       color: Color(_whitePrimaryValue))),
             ),
             onTap: () {
-              Navigator.pushNamed(context, "/settings");
+              _navigateAndCloseDrawer("/settings");
             },
           ),
           ListTile(
-            title: Padding(
-              padding: const EdgeInsets.only(left: 25),
+            title: const Padding(
+              padding: EdgeInsets.only(left: 25),
               child: Text('About Us',
                   style: TextStyle(
                       fontSize: 16,
@@ -186,12 +189,12 @@ class _DrawerManuState extends State<DrawerManu> {
                       color: Color(_whitePrimaryValue))),
             ),
             onTap: () {
-              Navigator.pushNamed(context, "/home");
+              _navigateAndCloseDrawer("/home");
             },
           ),
           ListTile(
-            title: Padding(
-              padding: const EdgeInsets.only(left: 25),
+            title: const Padding(
+              padding: EdgeInsets.only(left: 25),
               child: Text('Contact Us',
                   style: TextStyle(
                       fontSize: 16,
@@ -199,12 +202,12 @@ class _DrawerManuState extends State<DrawerManu> {
                       color: Color(_whitePrimaryValue))),
             ),
             onTap: () {
-              Navigator.pushNamed(context, "/home");
+              _navigateAndCloseDrawer("/home");
             },
           ),
           ListTile(
-            title: Padding(
-              padding: const EdgeInsets.only(left: 25),
+            title: const Padding(
+              padding: EdgeInsets.only(left: 25),
               child: Text('Register As Astrologer',
                   style: TextStyle(
                       fontSize: 16,
@@ -212,22 +215,22 @@ class _DrawerManuState extends State<DrawerManu> {
                       color: Color(_whitePrimaryValue))),
             ),
             onTap: () {
-              Navigator.pushNamed(context, "/home");
+              _navigateAndCloseDrawer("/home");
             },
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 40, top: 40),
+          const Padding(
+            padding: EdgeInsets.only(left: 40, top: 40),
             child: Text('Follow Us',
                 style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                     color: Color(_whitePrimaryValue))),
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 40.0),
+          const Padding(
+            padding: EdgeInsets.only(left: 40.0),
             child: Row(
               children: [
                 FaIcon(
@@ -262,24 +265,24 @@ class _DrawerManuState extends State<DrawerManu> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 40,
           ),
           Padding(
             padding: const EdgeInsets.only(left: 25.0),
             child: ListTile(
-              leading: FaIcon(FontAwesomeIcons.signOut,color: Colors.white,),
-              title: Text('LOGOUT',
+              leading: const FaIcon(FontAwesomeIcons.signOut,color: Colors.white,),
+              title: const Text('LOGOUT',
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w500,
                       color: Color(_whitePrimaryValue))),
               onTap: () {
-                Navigator.pushNamed(context, "/home");
+                _navigateAndCloseDrawer("/home");
               },
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 60,
           )
         ],

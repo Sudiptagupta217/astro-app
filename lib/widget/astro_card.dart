@@ -2,10 +2,25 @@ import 'package:flutter/material.dart';
 
 class AstroCard extends StatefulWidget {
   final String image;
-  final String text;
-  final buttontapped;
+  final String name;
+  final String astroType;
+  final String languageKnown;
+  final String experience;
+  final String rate;
+  final String price;
+  final String buttonText;
+  final VoidCallback callback;
 
-  const AstroCard({Key? key, required this.image,required this.text, this.buttontapped}) : super(key: key);
+  const AstroCard({Key? key,
+    required this.image,
+    required this.name,
+    required this.astroType,
+    required this.languageKnown,
+    required this.experience,
+    required this.callback,
+    required this.rate,
+    required this.buttonText,
+    required this.price,}) :super(key: key);
 
   @override
   State<AstroCard> createState() => _AstroCardState();
@@ -40,18 +55,9 @@ class _AstroCardState extends State<AstroCard> {
                   child:  Stack(
                     children: [
                       Container(
-                        margin: EdgeInsets.only(bottom: 20,top: 10),
+                        margin: const EdgeInsets.only(bottom: 20,top: 10),
                         height: 145,
-                        // decoration: BoxDecoration(
-                        //   // image: DecorationImage(
-                        //   //     image:
-                        //   //     AssetImage(widget.image)
-                        //   //     //NetworkImage(widget.image),fit: BoxFit.cover
-                        //   // ),
-                        //   borderRadius: BorderRadius.only(bottomRight: Radius.circular(25)),
-                        //
-                        // ),
-                        child: ClipRRect(borderRadius: BorderRadius.only(bottomRight: Radius.circular(25)), child: Image.asset(widget.image,fit: BoxFit.cover)),
+                        child: ClipRRect(borderRadius: const BorderRadius.only(bottomRight: Radius.circular(25)), child: Image.asset(widget.image,fit: BoxFit.cover)),
                       ),
                       Positioned(
                         child: Container(
@@ -82,7 +88,7 @@ class _AstroCardState extends State<AstroCard> {
                                 color: Color(
                                     0xffffce31),
                               ),
-                              Text("5")
+                              Text(widget.rate)
                             ],
                           ),
                         ),
@@ -95,47 +101,47 @@ class _AstroCardState extends State<AstroCard> {
 
               Container(
                 width: MediaQuery.of(context).size.width * 0.43,
-                margin: EdgeInsets.only(left: 10),
+                margin: const EdgeInsets.only(left: 10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 7,),
+                    const SizedBox(height: 7,),
                     Row(
                       children: [
-                        Text("John Doe", style: TextStyle(
+                        Text(widget.name, style: const TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 22
                         ),)
                       ],
                     ),
-                    SizedBox(height: 7,),
+                    const SizedBox(height: 7,),
 
 
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Image.asset("assets/images/horo.png"),
-                        Text("Vasthu, Vedic ", style: TextStyle(
+                        Text(widget.astroType, style: const TextStyle(
                             color: Color(0xFF616161),
                             fontSize: 14,
                             fontWeight: FontWeight.w400
                         ),),
-                        Text("+7 more", style: TextStyle(
+                        const Text("+7 more", style: TextStyle(
                             color: Color(0xFF000000),
                             fontSize: 14,
                             fontWeight: FontWeight.w400
                         ),)
                       ],
                     ),
-                    SizedBox(height: 5,),
+                    const SizedBox(height: 5,),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(width: 4,),
+                        const SizedBox(width: 4,),
                         Image.asset("assets/images/lang.png"),
-                        SizedBox(width: 4,),
-                        Text("English, Hindi, Punjabi", style: TextStyle(
+                        const SizedBox(width: 4,),
+                        Text(widget.languageKnown, style: const TextStyle(
                             color: Color(0xFF616161),
                             fontSize: 14,
                             fontWeight: FontWeight.w400
@@ -143,31 +149,30 @@ class _AstroCardState extends State<AstroCard> {
 
                       ],
                     ),
-                    SizedBox(height: 10,),
+                    const SizedBox(height: 10,),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(width: 4,),
+                        const SizedBox(width: 4,),
                         Image.asset("assets/images/exp.png"),
-                        SizedBox(width: 4,),
-                        Text("10 Years", style: TextStyle(
+                        const SizedBox(width: 4,),
+                        Text(widget.experience, style: const TextStyle(
                             color: Color(0xFF616161),
                             fontSize: 14,
                             fontWeight: FontWeight.w400
                         ),),
-
                       ],
                     ),
-                    SizedBox(height: 10,),
 
+                    const SizedBox(height: 10,),
 
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(width: 3,),
+                        const SizedBox(width: 3,),
                         Image.asset("assets/images/money_symbol.png"),
-                        SizedBox(width: 5,),
-                        Text("30/min", style: TextStyle(
+                        const SizedBox(width: 5,),
+                        Text(widget.price, style: const TextStyle(
                             color: Color(0xFF030303),
                             fontSize: 14,
                             fontWeight: FontWeight.w600
@@ -178,35 +183,27 @@ class _AstroCardState extends State<AstroCard> {
                     Row(
                       children: [
                         //SizedBox(width: 50,),
-                        Spacer(),
+                        const Spacer(),
                         TextButton(
-                          onPressed: (){widget.buttontapped();},
+                          onPressed: (){widget.callback();},
                           style: TextButton.styleFrom(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50),
                               ),
-                              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 8),
+                              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 8),
                               elevation: 2,
                               foregroundColor: Colors.white,
                               backgroundColor: Color(0xFF0341A9)
                           ),
-                          child: Text(widget.text),
+                          child: Text(widget.buttonText),
                         ),
                       ],
                     )
-
-
                   ],
                 ),
               )
-
             ],
           ),
-
-
-
-
-
         ],
       ),
     );

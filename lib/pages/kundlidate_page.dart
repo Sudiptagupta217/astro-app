@@ -1,120 +1,91 @@
-import 'package:flutter/cupertino.dart';
+import 'package:astro/widget/custom_button.dart';
+import 'package:astro/utils/default_colors.dart';
 import 'package:flutter/material.dart';
+import '../widget/custom2_form_filed.dart';
 
 class KundaliDate extends StatefulWidget {
+  const KundaliDate({super.key});
+
   @override
   State<StatefulWidget> createState() => KundaliDateState();
 }
 
 class KundaliDateState extends State<KundaliDate> {
+  TextEditingController dateController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: DefaultColor.bg_color,
         body: SingleChildScrollView(
           child: Container(
       width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("assets/images/bg.png"), fit: BoxFit.cover)),
       child: Column(
           children: [
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 25),
-              margin: EdgeInsets.only(top: 50),
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              margin: const EdgeInsets.only(top: 50),
               child: Row(
                 children: [
                   GestureDetector(
                     onTap: () {
                       Navigator.of(context).pop();
                     },
-                    child: Container(
-                      child: Icon(
-                        Icons.arrow_back_ios,
+                    child: const Icon(
+                      Icons.arrow_back_ios,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const Spacer(),
+                  const Text(
+                    "Kundli",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
                         color: Colors.white,
-                      ),
-                    ),
+                        fontSize: 22,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 0.5),
                   ),
-                  Spacer(),
-                  Container(
-                    child: Text(
-                      "Kundli",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 22,
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: 0.5),
-                    ),
-                  ),
-                  Spacer(),
+                  const Spacer(),
                 ],
               ),
             ),
             Container(
               width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.only(top: 50),
-              padding: EdgeInsets.only(top: 45, right: 25, left: 25),
+              margin: const EdgeInsets.only(top: 50),
+              padding: const EdgeInsets.only(top: 45, right: 25, left: 25),
               decoration: BoxDecoration(
-                  color: Color(0xFFF8F8F9),
-                  borderRadius: BorderRadius.only(
+                  color: DefaultColor.bg_color,
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(50.0),
-                  )),
+                  ),
+              border: Border.all(color: Colors.transparent)
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10.0,top: 10),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 5.0,top: 10),
                     child: Text(
                       "Enter Your Birth Date",
                       style: TextStyle(fontSize: 17, color: Colors.black,fontWeight: FontWeight.w600),
                     ),
                   ),
-                  SizedBox(height: 10,),
-                  Container(
-                    height: 55,
-                    child: TextFormField(
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      style: TextStyle(color: Colors.black,fontWeight: FontWeight.w500,fontSize: 17),
-                      decoration: InputDecoration(
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xffD0D0D0), width: 1.2),
-                          borderRadius: BorderRadius.circular(15.0),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xffD0D0D0), width: 1.2),
-                          borderRadius: BorderRadius.circular(15.0),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
+                  const SizedBox(height: 10,),
+                  Custom2FormFiled( controller: dateController, keyboardType: TextInputType.name),
+
+                  const SizedBox(
                     height: 120,
                   ),
-                  Container(
-                    alignment: Alignment.center,
-                    margin: EdgeInsets.only(top: 20,bottom: 20),
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, "/kundalitime");
-                      },
-                      style: TextButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                          padding: EdgeInsets.symmetric(
-                              horizontal:
-                              MediaQuery.of(context).size.width * 0.22,
-                              vertical: 20),
-                          elevation: 2,
-                          foregroundColor: Color(0xFF000000),
-                          backgroundColor: Color(0xFFFDCE2D)),
-                      child: Text(
-                        "Next",
-                        style:
-                        TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                      ),
-                    ),
-                  ),
+
+                CustomButton(title: "Next",
+                    backgroundColor: DefaultColor.yellow,
+                    foregroundColor: DefaultColor.black,
+                    padding: EdgeInsets.symmetric( horizontal:
+                MediaQuery.of(context).size.width * 0.22,
+                    vertical: 20), callback: (){Navigator.pushNamed(context, "/kundalitime");})
 
                 ],
               ),

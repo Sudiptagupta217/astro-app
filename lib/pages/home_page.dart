@@ -4,13 +4,19 @@ import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
+import '../utils/default_colors.dart';
+import '../widget/add_card.dart';
+import '../widget/popurar_astro_card.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  TextEditingController searchController = TextEditingController();
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   int selectedIndex = 0;
 
@@ -29,36 +35,34 @@ class _HomeScreenState extends State<HomeScreen> {
       'assets/images/rectangle.png',
       'assets/images/rectangle.png',
     ];
-    
+
     return Scaffold(
-      key: _key, // A
+      key: _key,
       drawer: DrawerManu(),
-      // endDrawer: DrawerManu(),
       bottomNavigationBar: BottomMenu(
         selectedIndex: selectedIndex,
         onClicked: onClicked,
       ),
-
       body: SingleChildScrollView(
         child: Container(
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage("assets/images/bg.png"),
                   fit: BoxFit.cover)),
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                margin: EdgeInsets.only(top: 80),
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                margin: const EdgeInsets.only(top: 80),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     GestureDetector(
                       onTap: () => _key.currentState!.openDrawer(),
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 8, top: 8),
+                      child: const Padding(
+                        padding: EdgeInsets.only(right: 8, top: 8),
                         child: Image(
                           image: AssetImage("assets/images/manu.png"),
                         ),
@@ -67,33 +71,61 @@ class _HomeScreenState extends State<HomeScreen> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "Hi, Tara",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 24,
-                              fontWeight: FontWeight.w700,
-                              letterSpacing: 0.02),
+                        Row(
+                          children: [
+                            const Text(
+                              "Hi, Tara",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w700,
+                                  letterSpacing: 0.02),
+                            ),
+                            Stack(children: [
+                              Positioned(
+                                  top: 0,
+                                  right: 0,
+                                  child: Container(
+                                    height: 10,
+                                    width: 10,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(50),
+                                      color: Colors.green,
+                                    ),
+                                    child: const Center(
+                                        child: Text(
+                                      "1",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 9),
+                                    )),
+                                  )),
+                              const Icon(
+                                Icons.notifications_none,
+                                color: Colors.white,
+                              )
+                            ]),
+                          ],
                         ),
-                        Text(
+                        const Text(
                           "Welcome to Astrology",
                           style: TextStyle(color: Colors.white),
                         ),
                       ],
                     ),
-                    Spacer(),
+                    const Spacer(),
                     InkWell(
-                       onTap: () {
-                         Navigator.pushNamed(context, '/wallet');
-                       },
+                      onTap: () {
+                        Navigator.pushNamed(context, '/wallet');
+                      },
                       child: Container(
-                        margin: EdgeInsets.only(top: 20),
+                        margin: const EdgeInsets.only(top: 20),
                         height: 20,
                         width: 20,
                         //child: GestureDetector(
-                        child:
-                         Image(image: AssetImage("assets/images/wallet1.png"),),
-                      //  FaIcon(FontAwesomeIcons.wallet,color: Colors.white,size: 20),
+                        child: const Image(
+                          image: AssetImage("assets/images/wallet1.png"),
+                        ),
+                        //  FaIcon(FontAwesomeIcons.wallet,color: Colors.white,size: 20),
                         //),
                       ),
                     ),
@@ -101,62 +133,64 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top: 30),
-                padding: EdgeInsets.only(top: 10),
+                margin: const EdgeInsets.only(top: 30),
+                padding: const EdgeInsets.only(top: 10),
                 width: MediaQuery.of(context).size.width,
                 //height: MediaQuery.of(context).size.height,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(50.0),
                     )),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-
-                    Container(
-                        child: Padding(
+                  children: <Widget>[
+                    Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5.0),
                       child: Column(
                         children: [
-                          Container(
-                            height:60,
+                          SizedBox(
+                            height: 60,
                             child: Card(
                               elevation: 4,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30.0),
                               ),
                               child: TextField(
-                                // enabled: false,
+                                controller: searchController,
                                 decoration: InputDecoration(
                                     hintText: "Search",
                                     focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.white),
+                                      borderSide:
+                                          const BorderSide(color: Colors.white),
                                       borderRadius: BorderRadius.circular(30),
                                     ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.white),
+                                      borderSide:
+                                          const BorderSide(color: Colors.white),
                                       borderRadius: BorderRadius.circular(30),
                                     ),
                                     disabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.white),
+                                      borderSide:
+                                          const BorderSide(color: Colors.white),
                                       borderRadius: BorderRadius.circular(30),
                                     ),
-                                    prefixIcon: Icon(Icons.search,
+                                    prefixIcon: const Icon(Icons.search,
                                         color: Colors.black54)),
                               ),
                             ),
                           ),
-                          SizedBox(height: 15),
+                          const SizedBox(height: 15),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Container(width: MediaQuery.of(context).size.width * 0.42,
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.42,
                                 child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(
-                                      primary: Color(0xff341A9D),
+                                      primary: DefaultColor.blue,
                                       // Set the background color
-                                      onPrimary: Colors.white,
+                                      onPrimary: DefaultColor.white,
                                       // Set the text color
                                       elevation: 4.0,
                                       // Set the elevation
@@ -166,8 +200,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ),
                                     ),
                                     onPressed: () {},
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
+                                    child: const Padding(
+                                      padding: EdgeInsets.symmetric(
                                           horizontal: 6, vertical: 17.5),
                                       child: Text(
                                         "Daily Horoscope ",
@@ -175,14 +209,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ),
                                     )),
                               ),
-
-
-
-
-                              Container(width: MediaQuery.of(context).size.width * 0.42,
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.42,
                                 child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(
-                                      primary: Color(0xff30B900),
+                                      primary: DefaultColor.green,
                                       // Set the background color
                                       onPrimary: Colors.white,
                                       // Set the text color
@@ -194,8 +225,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ),
                                     ),
                                     onPressed: () {},
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
+                                    child: const Padding(
+                                      padding: EdgeInsets.symmetric(
                                           horizontal: 6, vertical: 17.5),
                                       child: Text(
                                         "Live Astrology ",
@@ -210,12 +241,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                 const EdgeInsets.symmetric(horizontal: 20.0),
                             child: Column(
                               children: [
-                                SizedBox(height: 15),
+                                const SizedBox(height: 15),
                                 Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
+                                    const Text(
                                       "Daily Horoscope",
                                       style: TextStyle(
                                           fontSize: 22,
@@ -226,14 +257,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                           Navigator.pushNamed(
                                               context, "/dailyhoroscope");
                                         },
-                                        child: Text(
+                                        child: const Text(
                                           "See All",
                                           style: TextStyle(fontSize: 14),
                                         )),
                                   ],
                                 ),
                                 Container(
-                                  margin: EdgeInsets.only(top: 20),
+                                  margin: const EdgeInsets.only(top: 20),
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -245,8 +276,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                         decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(20),
-                                            color: Color(0xFFFFF9EB)),
-                                        padding: EdgeInsets.symmetric(
+                                            color: const Color(0xFFFFF9EB)),
+                                        padding: const EdgeInsets.symmetric(
                                             horizontal: 20, vertical: 25),
                                         child: Column(
                                           children: [
@@ -258,8 +289,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                             ),
                                             Container(
                                                 margin:
-                                                    EdgeInsets.only(top: 10),
-                                                child: Text(
+                                                    const EdgeInsets.only(top: 10),
+                                                child: const Text(
                                                   "Lea",
                                                   style: TextStyle(
                                                       color: Colors.black,
@@ -277,8 +308,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                         decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(20),
-                                            color: Color(0xFFD4F8FF)),
-                                        padding: EdgeInsets.symmetric(
+                                            color: const Color(0xFFD4F8FF)),
+                                        padding: const EdgeInsets.symmetric(
                                             horizontal: 20, vertical: 25),
                                         child: Column(
                                           children: [
@@ -290,8 +321,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                             ),
                                             Container(
                                                 margin:
-                                                    EdgeInsets.only(top: 10),
-                                                child: Text(
+                                                    const EdgeInsets.only(top: 10),
+                                                child: const Text(
                                                   "Virgo",
                                                   style: TextStyle(
                                                       color: Colors.black,
@@ -309,8 +340,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                         decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(20),
-                                            color: Color(0xFFE0E6FF)),
-                                        padding: EdgeInsets.symmetric(
+                                            color: const Color(0xFFE0E6FF)),
+                                        padding: const EdgeInsets.symmetric(
                                             horizontal: 20, vertical: 25),
                                         child: Column(
                                           children: [
@@ -322,8 +353,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                             ),
                                             Container(
                                                 margin:
-                                                    EdgeInsets.only(top: 10),
-                                                child: Text(
+                                                    const EdgeInsets.only(top: 10),
+                                                child: const Text(
                                                   "Cancer",
                                                   style: TextStyle(
                                                       color: Colors.black,
@@ -342,9 +373,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ],
                       ),
-                    )),
+                    ),
 
-                    SizedBox(height: 40),
+                    const SizedBox(height: 40),
 
                     Stack(
                       children: [
@@ -353,68 +384,97 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: Colors.white,
                         ),
                         Positioned(
-                          child: Container(
+                          right: 25,
+                          left: 25,
+                          child: SizedBox(
                             width: MediaQuery.of(context).size.width,
                             height: 180,
-                            child: Image.asset("assets/images/rectangle.png"),
+                            child: Image.asset("assets/images/rectangle.png",
+                                fit: BoxFit.fill),
                           ),
                         ),
                         Positioned(
                           top: 160,
                           bottom: 2,
-                          child: Container(
+                          child: SizedBox(
                               width: MediaQuery.of(context).size.width,
                               height: 150,
                               child: Center(
-                                child: Container(
+                                child: SizedBox(
                                     width: 200,
                                     child: Row(
                                       children: [
-
                                         Expanded(
                                             flex: 1,
-                                            child:
-                                                InkWell(
-                                                  onTap: () {
-                                                    Navigator.pushNamed(context, "/astro_call");
-                                                  },
-                                                  child: Container(
-                                                    height: 150,
-                                                    decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20)),color: Colors.blue),
-                                                     child: Row(
-                                                       mainAxisAlignment: MainAxisAlignment.center,
-                                                       children: [
-                                                         Icon(Icons.call,color: Colors.white,size: 17),
-                                                         SizedBox(width: 5,),
-                                                         Text("Call",style: TextStyle(color: Colors.white,fontSize: 14),)
-                                                       ],
-                                                     ),
-                                                      ),
-                                                )
-                                        ),
-
-                                        SizedBox(width: 20),
-
-                                        Expanded(
-                                            flex: 1,
-                                            child:
-                                                InkWell(
-                                                  onTap: () {
-                                                    Navigator.pushNamed(context,"/astro_chat");
-                                                  },
-                                                  child: Container(
-                                                    height: 150,
-                                                      decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20)),color: Colors.green),
-                                                    child: Row(
-                                                      mainAxisAlignment: MainAxisAlignment.center,
-                                                      children: [
-                                                        Icon(Icons.sms_outlined,color: Colors.white,size: 17),
-                                                        SizedBox(width: 5,),
-                                                        Text("Chat",style: TextStyle(color: Colors.white,fontSize: 14),)
-                                                      ],
+                                            child: InkWell(
+                                              onTap: () {
+                                                Navigator.pushNamed(
+                                                    context, "/astro_call");
+                                              },
+                                              child: Container(
+                                                height: 150,
+                                                decoration: const BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                20)),
+                                                    color: Colors.blue),
+                                                child: const Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Icon(Icons.call,
+                                                        color: Colors.white,
+                                                        size: 17),
+                                                    SizedBox(
+                                                      width: 5,
                                                     ),
-                                                  ),
-                                                )),
+                                                    Text(
+                                                      "Call",
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 14),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            )),
+                                        const SizedBox(width: 20),
+                                        Expanded(
+                                            flex: 1,
+                                            child: InkWell(
+                                              onTap: () {
+                                                Navigator.pushNamed(
+                                                    context, "/astro_chat");
+                                              },
+                                              child: Container(
+                                                height: 150,
+                                                decoration: const BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                20)),
+                                                    color: Colors.green),
+                                                child: const Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Icon(Icons.sms_outlined,
+                                                        color: Colors.white,
+                                                        size: 17),
+                                                    SizedBox(
+                                                      width: 5,
+                                                    ),
+                                                    Text(
+                                                      "Chat",
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 14),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            )),
                                       ],
                                     )),
                               )),
@@ -424,100 +484,120 @@ class _HomeScreenState extends State<HomeScreen> {
 
                     //Kundali & Matching Making & Shubh Muhurat
                     Container(
-                      margin: EdgeInsets.only(top: 20),
+                      margin: const EdgeInsets.only(top: 20),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Expanded(
                               flex: 1,
                               child: InkWell(
-                               onTap: () {Navigator.pushNamed(context, "/kundali");},
+                                onTap: () {
+                                  Navigator.pushNamed(context, "/kundali");
+                                },
                                 child: Column(
                                   children: [
                                     Container(
                                       margin:
-                                          EdgeInsets.symmetric(horizontal: 25),
+                                          const EdgeInsets.symmetric(horizontal: 25),
                                       height: 100,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Color(0xFFCFE7DA),
                                       ),
-                                      child:
-                                          Padding(
-                                            padding: const EdgeInsets.all(20.0),
-                                            child: Image.asset("assets/images/kundli.png",),
-                                          ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(20.0),
+                                        child: Image.asset(
+                                          "assets/images/kundli.png",
+                                        ),
+                                      ),
                                     ),
-                                    Text("Kundali",style: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),)
+                                    const Text(
+                                      "Kundali",
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w500),
+                                    )
                                   ],
                                 ),
                               )),
-
                           Expanded(
                               flex: 1,
                               child: InkWell(
-                                onTap: () {Navigator.pushNamed(context, "/matchmakingboy");},
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, "/matchmakingboy");
+                                },
                                 child: Column(
                                   children: [
                                     Container(
-                                      margin:
-                                          EdgeInsets.symmetric(horizontal: 25),
+                                      margin: const EdgeInsets.symmetric(
+                                          horizontal: 25),
                                       height: 100,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Color(0xFFFFE5EA),
                                       ),
-                                      child:
-                                          Padding(
-                                            padding: const EdgeInsets.all(20.0),
-                                            child: Image.asset("assets/images/match.png"),
-                                          ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(20.0),
+                                        child: Image.asset(
+                                            "assets/images/match.png"),
+                                      ),
                                     ),
-                                    Text("Match Making",style: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),)
+                                    const Text(
+                                      "Match Making",
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w500),
+                                    )
                                   ],
                                 ),
                               )),
-
                           Expanded(
                               flex: 1,
-                              child:InkWell(
-                                onTap: () {Navigator.pushNamed(context, "/shubhmuhurat");},
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.pushNamed(context, "/shubhmuhurat");
+                                },
                                 child: Column(
                                   children: [
-                                  Container(
-                                  margin: EdgeInsets.symmetric(horizontal: 25),
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Color(0xFFF5EAFB),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(20.0),
-                                    child: Image.asset("assets/images/shubh.png"),
-                                  ),
-                                  ),
-                                  Text("Shubh Muhurat",style: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),)
-
-                                ],),
-                              )
-                              ),
-
-
+                                    Container(
+                                      margin: const EdgeInsets.symmetric(
+                                          horizontal: 25),
+                                      height: 100,
+                                      decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Color(0xFFF5EAFB),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(20.0),
+                                        child: Image.asset(
+                                            "assets/images/shubh.png"),
+                                      ),
+                                    ),
+                                    const Text(
+                                      "Shubh Muhurat",
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w500),
+                                    )
+                                  ],
+                                ),
+                              )),
                         ],
                       ),
                     ),
 
                     //Most Popular
                     Container(
-                      margin: EdgeInsets.only(top: 40),
+                      margin: const EdgeInsets.only(top: 40),
                       child: Column(
                         children: [
                           Container(
-                            padding: EdgeInsets.symmetric(horizontal: 30),
+                            padding: const EdgeInsets.symmetric(horizontal: 30),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
+                                const Text(
                                   "Most Popular",
                                   style: TextStyle(
                                       fontSize: 22,
@@ -528,511 +608,66 @@ class _HomeScreenState extends State<HomeScreen> {
                                       Navigator.pushNamed(
                                           context, "/astrologers_list");
                                     },
-                                    child: Text(
+                                    child: const Text(
                                       "See All",
                                       style: TextStyle(fontSize: 14),
                                     )),
                               ],
                             ),
                           ),
-                          Container(
-                              child: SingleChildScrollView(
-                                  child: Row(
-                                    children: <Widget>[
-                                      Container(
-                                        margin: EdgeInsets.only(
-                                            left: 30, bottom: 20, top: 20),
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.38,
-                                        padding:
-                                            EdgeInsets.symmetric(vertical: 20),
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(15),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: Color(0xffDDDDDD),
-                                                blurRadius: 6.0,
-                                                spreadRadius: 2.0,
-                                                offset: Offset(0.0, 0.0),
-                                              )
-                                            ],
-                                            color: Colors.white),
-                                        child: Column(
-                                          children: [
-                                            Center(
-                                              child: Stack(
-                                                children: [
-                                                  Image.asset(
-                                                    "assets/images/astro_dp.png",
-                                                    height: 90,
-                                                    width: 90,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                  Positioned(
-                                                    child: Container(
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 20,
-                                                              vertical: 3),
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(50),
-                                                        color: Colors.white,
-                                                        boxShadow: [
-                                                          BoxShadow(
-                                                            color: Color(
-                                                                0xffDDDDDD),
-                                                            blurRadius: 6.0,
-                                                            spreadRadius: 2.0,
-                                                            offset: Offset(
-                                                                0.0, 0.0),
-                                                          )
-                                                        ],
-                                                      ),
-                                                      child: Row(
-                                                        children: [
-                                                          Icon(
-                                                            Icons.star,
-                                                            color: Color(
-                                                                0xffffce31),
-                                                          ),
-                                                          Text("5")
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    bottom: 0,
-                                                    left: 11,
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 15,
-                                            ),
-                                            Text(
-                                              "Astro Vivek K",
-                                              style: TextStyle(
-                                                  fontSize: 18,
-                                                  fontWeight: FontWeight.w700),
-                                            ),
-                                            Container(
-                                              margin: EdgeInsets.symmetric(
-                                                  vertical: 8),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Icon(
-                                                    Icons.currency_rupee,
-                                                    size: 15,
-                                                    color: Color(0xff341a9d),
-                                                  ),
-                                                  Text("30/min")
-                                                ],
-                                              ),
-                                            ),
-                                            Container(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: 30,
-                                                    vertical: 12),
-                                                decoration: BoxDecoration(
-                                                    color: Color(0xff341a9d),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            50)),
-                                                child: Text(
-                                                  "Connect",
-                                                  style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 14,
-                                                  ),
-                                                ))
-                                          ],
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.only(
-                                            left: 15, bottom: 20, top: 20),
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.38,
-                                        padding:
-                                            EdgeInsets.symmetric(vertical: 20),
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(15),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: Color(0xffDDDDDD),
-                                                blurRadius: 6.0,
-                                                spreadRadius: 2.0,
-                                                offset: Offset(0.0, 0.0),
-                                              )
-                                            ],
-                                            color: Colors.white),
-                                        child: Column(
-                                          children: [
-                                            Center(
-                                              child: Stack(
-                                                children: [
-                                                  Image.asset(
-                                                    "assets/images/astro_dp.png",
-                                                    height: 90,
-                                                    width: 90,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                  Positioned(
-                                                    child: Container(
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 20,
-                                                              vertical: 3),
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(50),
-                                                        color: Colors.white,
-                                                        boxShadow: [
-                                                          BoxShadow(
-                                                            color: Color(
-                                                                0xffDDDDDD),
-                                                            blurRadius: 6.0,
-                                                            spreadRadius: 2.0,
-                                                            offset: Offset(
-                                                                0.0, 0.0),
-                                                          )
-                                                        ],
-                                                      ),
-                                                      child: Row(
-                                                        children: [
-                                                          Icon(
-                                                            Icons.star,
-                                                            color: Color(
-                                                                0xffffce31),
-                                                          ),
-                                                          Text("5")
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    bottom: 0,
-                                                    left: 11,
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 15,
-                                            ),
-                                            Text(
-                                              "Astro Vivek K",
-                                              style: TextStyle(
-                                                  fontSize: 18,
-                                                  fontWeight: FontWeight.w700),
-                                            ),
-                                            Container(
-                                              margin: EdgeInsets.symmetric(
-                                                  vertical: 8),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Icon(
-                                                    Icons.currency_rupee,
-                                                    size: 15,
-                                                    color: Color(0xff341a9d),
-                                                  ),
-                                                  Text("30/min")
-                                                ],
-                                              ),
-                                            ),
-                                            Container(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: 30,
-                                                    vertical: 12),
-                                                decoration: BoxDecoration(
-                                                    color: Color(0xff341a9d),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            50)),
-                                                child: Text(
-                                                  "Connect",
-                                                  style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 14,
-                                                  ),
-                                                ))
-                                          ],
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.only(
-                                            left: 15, bottom: 20, top: 20),
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.38,
-                                        padding:
-                                            EdgeInsets.symmetric(vertical: 20),
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(15),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: Color(0xffDDDDDD),
-                                                blurRadius: 6.0,
-                                                spreadRadius: 2.0,
-                                                offset: Offset(0.0, 0.0),
-                                              )
-                                            ],
-                                            color: Colors.white),
-                                        child: Column(
-                                          children: [
-                                            Center(
-                                              child: Stack(
-                                                children: [
-                                                  Image.asset(
-                                                    "assets/images/astro_dp.png",
-                                                    height: 90,
-                                                    width: 90,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                  Positioned(
-                                                    child: Container(
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 20,
-                                                              vertical: 3),
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(50),
-                                                        color: Colors.white,
-                                                        boxShadow: [
-                                                          BoxShadow(
-                                                            color: Color(
-                                                                0xffDDDDDD),
-                                                            blurRadius: 6.0,
-                                                            spreadRadius: 2.0,
-                                                            offset: Offset(
-                                                                0.0, 0.0),
-                                                          )
-                                                        ],
-                                                      ),
-                                                      child: Row(
-                                                        children: [
-                                                          Icon(
-                                                            Icons.star,
-                                                            color: Color(
-                                                                0xffffce31),
-                                                          ),
-                                                          Text("5")
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    bottom: 0,
-                                                    left: 11,
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 15,
-                                            ),
-                                            Text(
-                                              "Astro Vivek K",
-                                              style: TextStyle(
-                                                  fontSize: 18,
-                                                  fontWeight: FontWeight.w700),
-                                            ),
-                                            Container(
-                                              margin: EdgeInsets.symmetric(
-                                                  vertical: 8),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Icon(
-                                                    Icons.currency_rupee,
-                                                    size: 15,
-                                                    color: Color(0xff341a9d),
-                                                  ),
-                                                  Text("30/min")
-                                                ],
-                                              ),
-                                            ),
-                                            Container(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: 30,
-                                                    vertical: 12),
-                                                decoration: BoxDecoration(
-                                                    color: Color(0xff341a9d),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            50)),
-                                                child: Text(
-                                                  "Connect",
-                                                  style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 14,
-                                                  ),
-                                                ))
-                                          ],
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.only(
-                                            left: 15,
-                                            bottom: 20,
-                                            top: 20,
-                                            right: 30),
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.38,
-                                        padding:
-                                            EdgeInsets.symmetric(vertical: 20),
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(15),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: Color(0xffDDDDDD),
-                                                blurRadius: 6.0,
-                                                spreadRadius: 2.0,
-                                                offset: Offset(0.0, 0.0),
-                                              )
-                                            ],
-                                            color: Colors.white),
-                                        child: Column(
-                                          children: [
-                                            Center(
-                                              child: Stack(
-                                                children: [
-                                                  Image.asset(
-                                                    "assets/images/astro_dp.png",
-                                                    height: 90,
-                                                    width: 90,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                  Positioned(
-                                                    child: Container(
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 20,
-                                                              vertical: 3),
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(50),
-                                                        color: Colors.white,
-                                                        boxShadow: [
-                                                          BoxShadow(
-                                                            color: Color(
-                                                                0xffDDDDDD),
-                                                            blurRadius: 6.0,
-                                                            spreadRadius: 2.0,
-                                                            offset: Offset(
-                                                                0.0, 0.0),
-                                                          )
-                                                        ],
-                                                      ),
-                                                      child: Row(
-                                                        children: [
-                                                          Icon(
-                                                            Icons.star,
-                                                            color: Color(
-                                                                0xffffce31),
-                                                          ),
-                                                          Text("5")
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    bottom: 0,
-                                                    left: 11,
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 15,
-                                            ),
-                                            Text(
-                                              "Astro Vivek K",
-                                              style: TextStyle(
-                                                  fontSize: 18,
-                                                  fontWeight: FontWeight.w700),
-                                            ),
-                                            Container(
-                                              margin: EdgeInsets.symmetric(
-                                                  vertical: 8),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Icon(
-                                                    Icons.currency_rupee,
-                                                    size: 15,
-                                                    color: Color(0xff341a9d),
-                                                  ),
-                                                  Text("30/min")
-                                                ],
-                                              ),
-                                            ),
-                                            Container(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: 30,
-                                                    vertical: 12),
-                                                decoration: BoxDecoration(
-                                                    color: Color(0xff341a9d),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            50)),
-                                                child: Text(
-                                                  "Connect",
-                                                  style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 14,
-                                                  ),
-                                                ))
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  scrollDirection: Axis.horizontal))
+                          SizedBox(
+                            height: 270,
+                            child: ListView.builder(
+                              itemCount: 4,
+                              scrollDirection: Axis.horizontal,
+                              // physics: NeverScrollableScrollPhysics(),
+                              // shrinkWrap: true,
+                              itemBuilder: (context, index) {
+                                return popuralAstroCard(
+                                    image: 'assets/images/astro_dp.png',
+                                    rating: '5',
+                                    type: "Palm Reader",
+                                    name: "Astro Vivek K",
+                                    rate: "30/min",
+                                    callback: () {});
+                              },
+                            ),
+                          )
                         ],
                       ),
                     ),
 
                     //Trending Consultations
                     Container(
-                        margin: EdgeInsets.only(top: 20),
+                        margin: const EdgeInsets.only(top: 20),
                         width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           gradient: LinearGradient(
                               colors: [Color(0xFF492771), Color(0xFF341A9D)],
-                              begin: const FractionalOffset(0.2, 1.0),
-                              end: const FractionalOffset(1.5, 0.1),
+                              begin: FractionalOffset(0.2, 1.0),
+                              end: FractionalOffset(1.5, 0.1),
                               stops: [0.0, 1.3],
                               tileMode: TileMode.clamp),
                         ),
                         child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
                             child: Row(
                               children: <Widget>[
                                 Container(
-                                  width: MediaQuery.of(context).size.width * 0.48,
-                                  padding: EdgeInsets.only(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.48,
+                                  padding: const EdgeInsets.only(
                                       left: 25, top: 30, bottom: 30),
                                   child: Column(
                                     crossAxisAlignment:
-                                    CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                     children: [
                                       InkWell(
-                                        onTap:(){
-                                          Navigator.pushNamed(context, "/trendingconsultations");
+                                        onTap: () {
+                                          Navigator.pushNamed(context,
+                                              "/trendingconsultations");
                                         },
-                                        child: Text(
+                                        child: const Text(
                                           "Trending Consultations",
                                           style: TextStyle(
                                               fontSize: 22,
@@ -1040,20 +675,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                               color: Color(0xFFFFFFFF)),
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 10,
                                       ),
-                                      Text(
+                                      const Text(
                                         "Astrology is a language, If you want to understand this language ,speak to us !",
                                         style: TextStyle(
                                             fontSize: 14,
                                             height: 1.8,
                                             color: Color(0xFFFFFFFF)),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 60,
                                       ),
-                                      Text(
+                                      const Text(
                                         "Swipe ",
                                         style: TextStyle(
                                             fontSize: 16,
@@ -1064,18 +699,24 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                 ),
                                 Container(
-                                  padding: EdgeInsets.only(left: 15, top: 30, bottom: 30),
+                                  padding: const EdgeInsets.only(
+                                      left: 15, top: 30, bottom: 30),
                                   child: Column(
-                                    crossAxisAlignment:CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Image(image: AssetImage("assets/images/health1.png"),
-                                        width: MediaQuery.of(context).size.width * 0.40,
+                                      Image(
+                                        image: const AssetImage(
+                                            "assets/images/health1.png"),
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.40,
                                         fit: BoxFit.cover,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 5,
                                       ),
-                                      Text(
+                                      const Text(
                                         "Health ",
                                         style: TextStyle(
                                             fontSize: 18,
@@ -1086,23 +727,24 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                 ),
                                 Container(
-                                  padding: EdgeInsets.only(
+                                  padding: const EdgeInsets.only(
                                       left: 15, top: 30, bottom: 30, right: 15),
                                   child: Column(
-                                    crossAxisAlignment:CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Image(
-                                        image: AssetImage(
+                                        image: const AssetImage(
                                             "assets/images/education.png"),
                                         width:
-                                        MediaQuery.of(context).size.width *
-                                            0.40,
+                                            MediaQuery.of(context).size.width *
+                                                0.40,
                                         fit: BoxFit.cover,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 5,
                                       ),
-                                      Text(
+                                      const Text(
                                         "Education ",
                                         style: TextStyle(
                                             fontSize: 18,
@@ -1112,64 +754,30 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ],
                                   ),
                                 )
-                                
                               ],
-                            ),
-                            scrollDirection: Axis.horizontal)),
+                            ))),
 
                     //add container
                     Container(
-                      margin: EdgeInsets.only(top: 20,bottom: 20),
+                      margin: const EdgeInsets.only(top: 20, bottom: 20),
                       child: Row(
-                        mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                         
-                          Container(
+                          AddCard(
+                            text: '100% Money Back Guarantee',
+                            color: 0xFF03D1FD,
                             width: MediaQuery.of(context).size.width * 0.30,
-                            height: 100,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                BorderRadius.circular(20),
-                                color: Color(0xFF03D1FD)),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 25),
-                            child: Center(
-                              child: Text("100% Money Back Guarantee",textAlign: TextAlign.center,
-                                style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w500),
-                              ),
-                            ),
                           ),
-                          Container(
+                          AddCard(
+                            text: 'Verified Astrologer',
+                            color: 0xFF749FFE,
                             width: MediaQuery.of(context).size.width * 0.30,
-                            height: 100,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                BorderRadius.circular(20),
-                                color: Color(0xFF749FFE)),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 25),
-                            child: Center(
-                              child: Text("Verified Astrologer",textAlign: TextAlign.center,
-                                style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w500),
-                              ),
-                            ),
                           ),
-                          Container(
+                          AddCard(
+                            text: '100% Privacy',
+                            color: 0xFFFE9A7C,
                             width: MediaQuery.of(context).size.width * 0.30,
-                            height: 100,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                BorderRadius.circular(20),
-                                color: Color(0xFFFE9A7C)),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 25),
-                            child: Center(
-                              child: Text("100% Privacy",textAlign: TextAlign.center,
-                                style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w500),
-                              ),
-                            ),
                           ),
-                          
                         ],
                       ),
                     ),
@@ -1182,31 +790,36 @@ class _HomeScreenState extends State<HomeScreen> {
                           items: images.map((image) {
                             return Builder(
                               builder: (BuildContext context) {
-                                return Container(
+                                return SizedBox(
                                   width: MediaQuery.of(context).size.width,
-                                  child: Image.asset(image),
+                                  child: Image.asset(
+                                    image,
+                                    fit: BoxFit.fill,
+                                  ),
                                 );
                               },
                             );
                           }).toList(),
                           options: CarouselOptions(
                             height: 175,
-                           // autoPlay: true,
+                            autoPlay: true,
                             enlargeCenterPage: true,
                             aspectRatio: 16 / 9,
                             autoPlayCurve: Curves.fastOutSlowIn,
                             enableInfiniteScroll: true,
-                            autoPlayAnimationDuration: Duration(milliseconds: 800),
-                            viewportFraction: 0.8,
+                            autoPlayAnimationDuration:
+                                const Duration(milliseconds: 2000),
+                            autoPlayInterval:
+                                const Duration(milliseconds: 7000),
+                            viewportFraction: 0.9,
                             onPageChanged: (index, reason) {
                               setState(() {
                                 _currentIndex = index;
                               });
                             },
-                            
                           ),
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: images.map((image) {
@@ -1214,28 +827,29 @@ class _HomeScreenState extends State<HomeScreen> {
                             return Container(
                               width: 10,
                               height: 2,
-                              margin: EdgeInsets.symmetric(horizontal: 4),
+                              margin: const EdgeInsets.symmetric(horizontal: 4),
                               decoration: BoxDecoration(
-                                color: index == _currentIndex ? Colors.black : Colors.grey,
+                                color: index == _currentIndex
+                                    ? Colors.black
+                                    : Colors.grey,
                               ),
                             );
                           }).toList(),
                         ),
-
                       ],
                     ),
 
                     //Traning Videos
                     Container(
-                      margin: EdgeInsets.only(top: 20),
+                      margin: const EdgeInsets.only(top: 20),
                       child: Column(
                         children: [
                           Container(
-                            padding: EdgeInsets.symmetric(horizontal: 30),
+                            padding: const EdgeInsets.symmetric(horizontal: 30),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
+                                const Text(
                                   "Traning Videos",
                                   style: TextStyle(
                                       fontSize: 22,
@@ -1243,35 +857,32 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 GestureDetector(
                                     onTap: () {
-                                      Navigator.pushNamed(
-                                          context, "/videos");
+                                      Navigator.pushNamed(context, "/videos");
                                     },
-                                    child: Text(
+                                    child: const Text(
                                       "See All",
-                                      style: TextStyle(fontSize: 14),)
-                                ),
+                                      style: TextStyle(fontSize: 14),
+                                    )),
                               ],
                             ),
                           ),
-                          Container(
-                            child: SingleChildScrollView(
+                          SizedBox(
+                            height: 215,
+                            child: ListView.builder(
+                              itemCount: 2,
                               scrollDirection: Axis.horizontal,
-                              child: Row(
-                                children:<Widget> [
-                                  Container(
+                              itemBuilder: (context, index) {
+                                return Container(
                                     height: 185,
-                                      width: MediaQuery.of(context).size.width * 0.8,
-                                     margin: EdgeInsets.only(left: 15, bottom: 20, top: 10),
-                                      child:Container(child: Image.asset("assets/images/videos1.png" , fit: BoxFit.fill,),)
-                                  ),
-                                  Container(
-                                      height: 185,
-                                       width: MediaQuery.of(context).size.width * 0.8,
-                                        margin: EdgeInsets.only(left: 10, bottom: 20, top: 10,right:10),
-                                      child:Container(child: Image.asset("assets/images/videos1.png" , fit: BoxFit.fill,),)
-                                  ),
-                                ],
-                              ),
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.8,
+                                    margin: const EdgeInsets.only(
+                                        left: 15, bottom: 20, top: 10),
+                                    child: Image.asset(
+                                      "assets/images/videos1.png",
+                                      fit: BoxFit.fill,
+                                    ));
+                              },
                             ),
                           )
                         ],
@@ -1280,15 +891,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
                     //Blog Widget
                     Container(
-                      margin: EdgeInsets.only(top: 20),
+                      margin: const EdgeInsets.only(top: 20),
                       child: Column(
                         children: [
                           Container(
-                            padding: EdgeInsets.symmetric(horizontal: 30),
+                            padding: const EdgeInsets.symmetric(horizontal: 30),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
+                                const Text(
                                   "Blogs",
                                   style: TextStyle(
                                       fontSize: 22,
@@ -1296,75 +907,67 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 GestureDetector(
                                     onTap: () {
-                                      Navigator.pushNamed(
-                                          context, "/blog");
+                                      Navigator.pushNamed(context, "/blog");
                                     },
-                                    child: Text(
+                                    child: const Text(
                                       "See All",
-                                      style: TextStyle(fontSize: 14),)
-                                ),
+                                      style: TextStyle(fontSize: 14),
+                                    )),
                               ],
                             ),
                           ),
-                          Container(
-                            child: SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Row(
-                                children:<Widget> [
-
-                                  Stack(
-                                    children: [
-                                      Container(width: MediaQuery.of(context).size.width, height: 250),
-                                      Positioned(
-                                        bottom: 50,
-                                        left: 20,
-                                        top: 10,
-                                        right: 20,
-                                        child:
-                                        ClipRRect(
-                                          borderRadius: BorderRadius.circular(20),
-                                          child: Image.asset('assets/images/blog.png',height: 250,fit: BoxFit.cover),
-                                        ),
-                                      ),
-
-                                      Positioned(
-                                        bottom: 20,
-                                        left: 30,
-                                        right: 30,
-                                        child: Container(
-                                          width: MediaQuery.of(context).size.width,
-                                          height: 75,
-                                          decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10)),color: Color(0xFF341A9D),
-                                          ),
-                                          child:Padding(
-                                            padding: const EdgeInsets.all(12.0),
-                                            child: 
-                                            ExpandableText(
-                                              "Lorem ipsum dolor sit amet, conseteturcxd sadipscing elitr, sed diam nonumy eirmoder tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-                                              maxLines: 3,
-                                              expandText: 'Read more',
-                                              collapseText: 'Read less',
-                                              linkStyle:TextStyle(color:Color(0xffF8BD02),),
-                                              // specify the text alignment
-                                              style: TextStyle(fontSize: 14,color: Colors.white,height: 1.3,wordSpacing: 1), // specify the text style
-                                          ),
-                                            
-                                            
-                                      )
-                                        )
-                                      )
-                                    ],
-                                  ),
-
-                                ],
+                          Stack(
+                            children: [
+                              SizedBox(
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 250),
+                              Positioned(
+                                bottom: 50,
+                                left: 20,
+                                top: 10,
+                                right: 20,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image.asset('assets/images/blog.png',
+                                      height: 250, fit: BoxFit.cover),
+                                ),
                               ),
-                            ),
-                          )
+                              Positioned(
+                                  bottom: 20,
+                                  left: 30,
+                                  right: 30,
+                                  child: Container(
+                                      width: MediaQuery.of(context).size.width,
+                                      height: 75,
+                                      decoration: const BoxDecoration(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10)),
+                                        color: Color(0xFF341A9D),
+                                      ),
+                                      child: const Padding(
+                                        padding: EdgeInsets.all(12.0),
+                                        child: ExpandableText(
+                                          "Lorem ipsum dolor sit amet, conseteturcxd sadipscing elitr, sed diam nonumy eirmoder tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+                                          maxLines: 3,
+                                          expandText: 'Read more',
+                                          collapseText: 'Read less',
+                                          linkStyle: TextStyle(
+                                            color: Color(0xffF8BD02),
+                                          ),
+                                          // specify the text alignment
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              color: Colors.white,
+                                              height: 1.3,
+                                              wordSpacing:
+                                                  1), // specify the text style
+                                        ),
+                                      )))
+                            ],
+                          ),
                         ],
                       ),
                     ),
-
-                    
                   ],
                 ),
               )

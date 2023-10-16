@@ -58,36 +58,34 @@ class ShopItemState extends State<ShopItemGrid>{
      body:  GridView.builder(itemBuilder: (context, index) {
        return Card(
          color: Colors.white,
-         shape: OutlineInputBorder(
+         shape: const OutlineInputBorder(
            borderSide: BorderSide(color: Colors.white),
            borderRadius: BorderRadius.only(bottomRight: Radius.circular(30)),
          ),
          elevation: 2,
-         child: Container(
-             child: Column(
-                 mainAxisAlignment: MainAxisAlignment.center,
-                 children: [
-                   Image.asset(shopitem[index]['images']!,width: 100,height: 50,),
-                   Container(
-                     width: double.infinity,
-                     margin: EdgeInsets.all(20),
-                     child: Column(
-                       mainAxisAlignment: MainAxisAlignment.start,
-                       crossAxisAlignment: CrossAxisAlignment.start,
-                       children: [
-                         Text(shopitem[index]['name'] as String, style: TextStyle(color: Colors.black, fontSize: 20),),
-                         Text(shopitem[index]['type'] as String, style: TextStyle(color: Colors.black, fontSize: 20),),
-                         Text(shopitem[index]['newprice'] as String, style: TextStyle(color: Colors.black, fontSize: 20),),
-                         Text(shopitem[index]['oldprice'] as String, style: TextStyle(color: Colors.black, fontSize: 20),),
-                       ],
-                     ),
-                   ),
-                 ]
-             )
+         child: Column(
+             mainAxisAlignment: MainAxisAlignment.center,
+             children: [
+               Image.asset(shopitem[index]['images']!,width: 100,height: 50,),
+               Container(
+                 width: double.infinity,
+                 margin: const EdgeInsets.all(20),
+                 child: Column(
+                   mainAxisAlignment: MainAxisAlignment.start,
+                   crossAxisAlignment: CrossAxisAlignment.start,
+                   children: [
+                     Text(shopitem[index]['name'] as String, style: const TextStyle(color: Colors.black, fontSize: 20),),
+                     Text(shopitem[index]['type'] as String, style: const TextStyle(color: Colors.black, fontSize: 20),),
+                     Text(shopitem[index]['newprice'] as String, style: const TextStyle(color: Colors.black, fontSize: 20),),
+                     Text(shopitem[index]['oldprice'] as String, style: const TextStyle(color: Colors.black, fontSize: 20),),
+                   ],
+                 ),
+               ),
+             ]
          ),
        );
      }, itemCount: shopitem.length,
-       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
            crossAxisCount: 2,
            crossAxisSpacing: 10,
            mainAxisSpacing: 10

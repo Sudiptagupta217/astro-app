@@ -1,11 +1,11 @@
 import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
+import 'package:astro/utils/default_colors.dart';
+import 'package:astro/widget/custom_button.dart';
 import 'package:flutter/material.dart';
 import '../widget/buttom_manu.dart';
+import '../widget/custom2_form_filed.dart';
 import '../widget/custom_radio.dart';
 import '../widget/drawer_manu.dart';
-import 'user_info_details_page.dart';
 import 'package:image_picker/image_picker.dart';
 
 enum Gender { male, female }
@@ -18,8 +18,12 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  Gender _selectedGender = Gender.male; // Initialize with a default value
+  Gender _selectedGender = Gender.male;
   int selectedIndex = 4;
+  TextEditingController nameController = TextEditingController();
+  TextEditingController birthDateController = TextEditingController();
+  TextEditingController birthTimeController = TextEditingController();
+  TextEditingController birthPlaceController = TextEditingController();
 
   PickedFile? _imageFile;
   final ImagePicker _picker = ImagePicker();
@@ -41,56 +45,52 @@ class _ProfilePageState extends State<ProfilePage> {
       body: SingleChildScrollView(
         child: Container(
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage("assets/images/bg.png"),
                   fit: BoxFit.cover)),
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 25),
-                margin: EdgeInsets.only(top: 60),
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                margin: const EdgeInsets.only(top: 60),
                 child: Row(
                   children: [
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).pop();
                       },
-                      child: Container(
-                        child: Icon(
-                          Icons.arrow_back_ios,
+                      child: const Icon(
+                        Icons.arrow_back_ios,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const Spacer(),
+                    const Text(
+                      "Profile",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
                           color: Colors.white,
-                        ),
-                      ),
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 0.5),
                     ),
-                    Spacer(),
-                    Container(
-                      child: Text(
-                        "Profile",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 0.5),
-                      ),
-                    ),
-                    Spacer(),
+                    const Spacer(),
                   ],
                 ),
               ),
               Container(
                 width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.only(top: 30),
-                padding: EdgeInsets.only(top: 30, right: 30, left: 30),
-                decoration: BoxDecoration(
-                    color: Color(0xFFF8F8F9),
+                margin: const EdgeInsets.only(top: 30),
+                padding: const EdgeInsets.only(top: 30, right: 30, left: 30),
+                decoration: const BoxDecoration(
+                    color: DefaultColor.bg_color,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(50.0),
                     )),
                 child: Column(
                   children: [
-                    Container(
+                    SizedBox(
                       width: 130,
                       height: 130,
                       child: Stack(
@@ -100,13 +100,13 @@ class _ProfilePageState extends State<ProfilePage> {
                               left: 10,
                               top: 10,
                               bottom: 10,
-                              child: Container(
+                              child: SizedBox(
                                   height: 130,
                                   width: 130,
                                   child: CircleAvatar(
                                     radius: 80,
                                     backgroundImage: _imageFile == null
-                                        ? AssetImage('assets/images/user.png') as ImageProvider<Object>
+                                        ? const AssetImage('assets/images/user.png') as ImageProvider<Object>
                                         : FileImage(File(_imageFile!.path)),
                                   )
                                   )),
@@ -124,8 +124,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                 width: 25,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(50),
-                                    color: Color(0xFF341A9D)),
-                                child: Icon(Icons.edit,
+                                    color: DefaultColor.blue),
+                                child: const Icon(Icons.edit,
                                     color: Colors.white, size: 17),
                               ),
                             ),
@@ -137,17 +137,17 @@ class _ProfilePageState extends State<ProfilePage> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: 30),
+                        const SizedBox(height: 30),
                         Row(
                           children: <Widget>[
-                            Text(
+                            const Text(
                               "Gender :",
                               style: TextStyle(
                                   color: Colors.black54,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 16),
                             ),
-                            SizedBox(width: 20),
+                            const SizedBox(width: 20),
                             CustomRadio(
                               value: Gender.male,
                               groupValue: _selectedGender,
@@ -156,17 +156,16 @@ class _ProfilePageState extends State<ProfilePage> {
                                   _selectedGender = value;
                                 });
                               },
-                              activeColor: Color(
-                                  0xFF341A9D), //FDCE2D Set the active color
+                              activeColor: DefaultColor.blue
                             ),
-                            SizedBox(width: 5),
-                            Text(
+                            const SizedBox(width: 5),
+                            const Text(
                               'Male',
                               style: TextStyle(
                                 color: Colors.black54,
                               ),
                             ),
-                            SizedBox(width: 20),
+                            const SizedBox(width: 20),
                             CustomRadio(
                               value: Gender.female,
                               groupValue: _selectedGender,
@@ -175,199 +174,52 @@ class _ProfilePageState extends State<ProfilePage> {
                                   _selectedGender = value;
                                 });
                               },
-                              activeColor: Color(
-                                  0xFF341A9D), //FDCE2D Set the active color
+                              activeColor: DefaultColor.blue
                             ),
-                            SizedBox(width: 5),
-                            Text(
+                            const SizedBox(width: 5),
+                            const Text(
                               'Female',
                               style: TextStyle(color: Colors.black54),
                             ),
                           ],
                         ),
-                        SizedBox(height: 15),
+                        const SizedBox(height: 15),
 
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16.0),
-                          child: Text(
-                            "Name",
-                            style:
-                                TextStyle(fontSize: 17, color: Colors.black87),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 3,
-                        ),
-                        Container(
-                          height: 55,
-                          child: TextFormField(
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 17),
-                            decoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color(0xffD0D0D0), width: 1.2),
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color(0xffD0D0D0), width: 1.2),
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                            ),
-                          ),
-                        ),
+                        Custom2FormFiled(title: 'Name', controller:nameController , keyboardType: TextInputType.name,),
 
-
-                        SizedBox(
+                        const SizedBox(
                           height: 15,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16.0),
-                          child: Text(
-                            "Birth Date",
-                            style:
-                                TextStyle(fontSize: 17, color: Colors.black87),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 3,
-                        ),
-                        Container(
-                          height: 55,
-                          child: TextFormField(
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 17),
-                            decoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color(0xffD0D0D0), width: 1.2),
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color(0xffD0D0D0), width: 1.2),
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
+
+                        Custom2FormFiled(title: 'Birth Date', controller:birthDateController , keyboardType: TextInputType.number,),
+
+
+                        const SizedBox(
                           height: 15,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16.0),
-                          child: Text(
-                            "Birth Time",
-                            style:
-                                TextStyle(fontSize: 17, color: Colors.black87),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 3,
-                        ),
-                        Container(
-                          height: 55,
-                          child: TextFormField(
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 17),
-                            decoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color(0xffD0D0D0), width: 1.2),
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color(0xffD0D0D0), width: 1.2),
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
+
+                        Custom2FormFiled(title: 'Birth Time', controller:birthTimeController , keyboardType: TextInputType.number,),
+
+
+                        const SizedBox(
                           height: 15,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16.0),
-                          child: Text(
-                            "Birth Place",
-                            style:
-                                TextStyle(fontSize: 17, color: Colors.black87),
-                          ),
-                        ),
-                        Container(
-                          height: 55,
-                          child: TextFormField(
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 17),
-                            decoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color(0xffD0D0D0), width: 1.2),
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color(0xffD0D0D0), width: 1.2),
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 3,
-                        ),
-                        Container(
-                          alignment: Alignment.center,
-                          margin: EdgeInsets.only(top: 20, bottom: 20),
-                          child:
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, "/home");
-                            },
-                            style: TextButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(50),
-                                ),
-                                padding: EdgeInsets.symmetric(
-                                    horizontal:
-                                        MediaQuery.of(context).size.width *
-                                            0.20,
-                                    vertical: 20),
-                                elevation: 2,
-                                foregroundColor: Color(0xFF000000),
-                                backgroundColor: Color(0xFFFDCE2D)),
-                            child: Text(
-                              "Submit",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                        ),
+
+                        Custom2FormFiled(title: 'Birth Place', controller:birthPlaceController , keyboardType: TextInputType.text,),
+
+
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: CustomButton(title: "Submit",
+                          margin: const EdgeInsets.symmetric(vertical: 20),
+                          padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.20,vertical: 20),
+                          callback: () {
+                          Navigator.pushNamed(context, "/home");
+                        },),
+                      )
                       ],
                     )
 
-                    // ClipOval(
-                    //   child: Image.asset('assets/images/profile1.png',
-                    //       fit: BoxFit.cover, width: 120, height: 120),
-                    // )
                   ],
                 ),
               )
@@ -382,14 +234,14 @@ class _ProfilePageState extends State<ProfilePage> {
     return Container(
       height: 100,
       width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.all(15),
+      margin: const EdgeInsets.all(15),
       child: Column(
         children: [
-          Text(
+          const Text(
             "Choose Profile Picture",
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Row(

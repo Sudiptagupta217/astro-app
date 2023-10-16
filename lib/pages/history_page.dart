@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-
 import '../widget/buttom_manu.dart';
 import '../widget/drawer_manu.dart';
+import '../widget/history_card.dart';
 
 class UserHistory extends StatefulWidget {
+  const UserHistory({super.key});
+
   @override
   State<StatefulWidget> createState() => HistoryState();
 }
@@ -19,43 +21,52 @@ class HistoryState extends State<UserHistory> {
 
   @override
   Widget build(BuildContext context) {
+
     var history = [
       {
+        'image':'assets/images/profile.png',
         'time': 'now',
         'body':
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor"
       },
       {
+        'image':'assets/images/profile.png',
+        'time': '35 minutes ago',
+        'body':
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor"
+      },
+      {
+        'image':'assets/images/profile.png',
         'time': '45 minutes ago',
         'body':
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor"
       },
       {
-        'time': '45 minutes ago',
+        'image':'assets/images/profile.png',
+        'time': '55 minutes ago',
         'body':
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor"
       },
       {
-        'time': '45 minutes ago',
+        'image':'assets/images/profile.png',
+        'time': '56 minutes ago',
         'body':
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor"
       },
       {
-        'time': '45 minutes ago',
+        'image':'assets/images/profile.png',
+        'time': '57 minutes ago',
         'body':
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor"
       },
       {
-        'time': '45 minutes ago',
-        'body':
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor"
-      },
-      {
-        'time': '45 minutes ago',
+        'image':'assets/images/profile.png',
+        'time': '59 minutes ago',
         'body':
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor"
       },
     ];
+
     return Scaffold(
         drawer: DrawerManu(),
         bottomNavigationBar: BottomMenu(
@@ -65,50 +76,46 @@ class HistoryState extends State<UserHistory> {
         body:SingleChildScrollView(
           child: Container(
             width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage("assets/images/bg.png"),
                     fit: BoxFit.cover)),
             child: Column(
                 children: [
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 25),
-                    margin: EdgeInsets.only(top: 60),
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    margin: const EdgeInsets.only(top: 60),
                     child: Row(
                       children: [
                         GestureDetector(
                           onTap: () {
                             Navigator.of(context).pop();
                           },
-                          child: Container(
-                            child: Icon(
-                              Icons.arrow_back_ios,
+                          child: const Icon(
+                            Icons.arrow_back_ios,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const Spacer(),
+                        const Text(
+                          "History",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
                               color: Colors.white,
-                            ),
-                          ),
+                              fontSize: 22,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: 0.5),
                         ),
-                        Spacer(),
-                        Container(
-                          child: Text(
-                            "History",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 22,
-                                fontWeight: FontWeight.w600,
-                                letterSpacing: 0.5),
-                          ),
-                        ),
-                        Spacer(),
+                        const Spacer(),
                       ],
                     ),
                   ),
 
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.only(top: 30),
-                    padding: EdgeInsets.only( right: 20, left: 20),
-                    decoration: BoxDecoration(
+                    margin: const EdgeInsets.only(top: 30),
+                    padding: const EdgeInsets.only( right: 20, left: 20),
+                    decoration: const BoxDecoration(
                         color: Color(0xFFF8F8F9),
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(50.0),
@@ -119,54 +126,12 @@ class HistoryState extends State<UserHistory> {
                       children: [
                         ListView.builder(
                           shrinkWrap: true,
-                          physics: BouncingScrollPhysics(),
+                          physics: const BouncingScrollPhysics(),
                           itemBuilder: (context, index) {
-                            return
-                              Card(
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                                elevation: 0.05,
-                                shadowColor: Colors.grey,
-                                child:
-
-                              Container(
-                                padding: EdgeInsets.only(top: 15,bottom: 15,left: 15,right: 15),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Image.asset(
-                                        'assets/images/profile.png',
-                                        fit: BoxFit.cover,
-                                        width: 50,
-                                        height: 50),
-
-                                    SizedBox(width: 8,),
-                                    Expanded(
-                                      flex: 1,
-                                      child: Column(
-                                        mainAxisAlignment:  MainAxisAlignment.start,
-                                        children: [
-                                          Text(history[index]['body']!,
-                                            maxLines: 3,
-                                            style: TextStyle(color: Colors.black87,),),
-                                          SizedBox(height: 15,),
-                                          Row(
-                                            children: [
-                                              Text(history[index]['time']!,
-                                              style: TextStyle(color: Colors.black54),),
-                                              Spacer(),
-                                              Text("Delete",
-                                                style: TextStyle(color: Colors.red,fontSize: 15,fontWeight: FontWeight.w500),),
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    )
-
-                                  ],
-                                ),
-                              )
-
-                            );
+                            return HistoryCard(image: history[index]['image'].toString(),
+                              text: history[index]['body'].toString(),
+                              time: history[index]['time'].toString(),
+                              buttonText: "Delete",);
                           },
                           itemCount: history.length,
                           scrollDirection: Axis.vertical,
@@ -177,9 +142,6 @@ class HistoryState extends State<UserHistory> {
                   )
                 ]
             ),
-
-
-
           ),
         )
     );

@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 
-class BottomPriceBar extends StatelessWidget {
+class BottomPriceBar extends StatefulWidget {
+  @override
+  State<BottomPriceBar> createState() => _BottomPriceBarState();
+}
+
+class _BottomPriceBarState extends State<BottomPriceBar> {
+  int count=1;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xffF6F6F6),
+      color: const Color(0xffF6F6F6),
       child: Container(
         height: 60,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(30)),
           color: Colors.white,
@@ -24,14 +31,14 @@ class BottomPriceBar extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Row(
             children: [
-              SizedBox(width: 10,),
-              Text("Rs.3500",
+              const SizedBox(width: 10,),
+              const Text("Rs.3500",
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w600,
                     color: Colors.black),
               ),
-              Spacer(),
+              const Spacer(),
 
               Container(
                 decoration: BoxDecoration(
@@ -44,14 +51,28 @@ class BottomPriceBar extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text("-",style: TextStyle(fontSize: 15),),
-                    Text("1",style: TextStyle(fontSize: 15),),
-                    Text("+",style: TextStyle(fontSize: 15),),
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          count--;
+                        });
+                      },
+                        child: const Text("–",style: TextStyle(fontSize: 15),)),
+
+                    Text(count.toString(),style: const TextStyle(fontSize: 15),),
+
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          count++;
+                        });
+                      },
+                        child: const Text("+",style: TextStyle(fontSize: 15),)),
 
                   ],
                 ),
               ),
-              SizedBox(width: 20,),
+              const SizedBox(width: 20,),
 
               TextButton(
                 onPressed: (){
@@ -61,12 +82,12 @@ class BottomPriceBar extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50),
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                     elevation: 2,
                     foregroundColor: Colors.white,
-                    backgroundColor: Color(0xFF0341A9)
+                    backgroundColor: const Color(0xFF0341A9)
                 ),
-                child: Text("Cart"),
+                child: const Text("Cart"),
               ),
             ],
           ),

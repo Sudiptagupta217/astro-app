@@ -23,7 +23,7 @@ class _HoroscopeTodayState extends State<HoroscopeToday> {
 
                     children: [
                       Container(
-                        margin: EdgeInsets.only(top: 20, left: 5),
+                        margin: const EdgeInsets.only(top: 20, left: 5),
                         child: TabBar(
                           isScrollable: true,
                           labelColor: Colors.white,
@@ -34,11 +34,11 @@ class _HoroscopeTodayState extends State<HoroscopeToday> {
                               child: Container(
                                 width: 60,
                                 height: 80,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     color: Colors.black,
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(12))),
-                                child: Icon(
+                                child: const Icon(
                                   Icons.person_rounded,
                                   size: 30,
                                   color: Colors.white,
@@ -49,11 +49,11 @@ class _HoroscopeTodayState extends State<HoroscopeToday> {
                               child: Container(
                                 width: 60,
                                 height: 60,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     color: Colors.black,
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(12))),
-                                child: Icon(
+                                child: const Icon(
                                   Icons.business_center,
                                   size: 30,
                                   color: Colors.white,
@@ -64,11 +64,11 @@ class _HoroscopeTodayState extends State<HoroscopeToday> {
                               child: Container(
                                 width: 60,
                                 height: 60,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     color: Colors.black,
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(12))),
-                                child: Icon(
+                                child: const Icon(
                                   Icons.monetization_on_rounded,
                                   size: 30,
                                   color: Colors.white,
@@ -79,11 +79,11 @@ class _HoroscopeTodayState extends State<HoroscopeToday> {
                               child: Container(
                                 width: 60,
                                 height: 60,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     color: Colors.black,
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(12))),
-                                child: Icon(
+                                child: const Icon(
                                   Icons.heart_broken_rounded,
                                   size: 30,
                                   color: Colors.white,
@@ -94,11 +94,11 @@ class _HoroscopeTodayState extends State<HoroscopeToday> {
                               child: Container(
                                 width: 60,
                                 height: 60,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     color: Colors.black,
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(12))),
-                                child: Icon(
+                                child: const Icon(
                                   Icons.school_sharp,
                                   size: 30,
                                   color: Colors.white,
@@ -109,11 +109,11 @@ class _HoroscopeTodayState extends State<HoroscopeToday> {
                               child: Container(
                                 width: 60,
                                 height: 60,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     color: Colors.black,
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(12))),
-                                child: Icon(
+                                child: const Icon(
                                   Icons.energy_savings_leaf,
                                   size: 30,
                                   color: Colors.white,
@@ -124,11 +124,11 @@ class _HoroscopeTodayState extends State<HoroscopeToday> {
                               child: Container(
                                 width: 60,
                                 height: 60,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     color: Colors.black,
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(12))),
-                                child: Icon(
+                                child: const Icon(
                                   Icons.person_rounded,
                                   size: 30,
                                   color: Colors.white,
@@ -137,7 +137,7 @@ class _HoroscopeTodayState extends State<HoroscopeToday> {
                             ),
                           ],
                           unselectedLabelColor: Colors.black,
-                          indicator: ShapeDecoration(
+                          indicator: const ShapeDecoration(
                               shape: RoundedRectangleBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(12))),
@@ -146,66 +146,50 @@ class _HoroscopeTodayState extends State<HoroscopeToday> {
                       ),
                       Container(
                         height: MediaQuery.of(context).size.height * 0.5,
-                        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-                        child: TabBarView(
+                        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                        child: const TabBarView(
                           children: <Widget>[
 
-                            Container(
-                              child: Center(
-                                child: Text("1"),
-                              ),
+                            Center(
+                              child: Text("1"),
                             ),
 
-                            Container(
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text("Career", style: TextStyle(fontWeight: FontWeight.w700,
+                                    fontSize: 22),),
+                                SizedBox(height: 10,),
 
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text("Career", style: TextStyle(fontWeight: FontWeight.w700,
-                                        fontSize: 22),),
-                                    SizedBox(height: 10,),
-                                    
-                                    Text("There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined.",
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                        color: Color(0xff6b6b6b),
-                                      fontWeight: FontWeight.w400,
-                                      height: 1.6
-                                    ),
-                                    )
-                                  ],
+                                Text("There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined.",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                    color: Color(0xff6b6b6b),
+                                  fontWeight: FontWeight.w400,
+                                  height: 1.6
                                 ),
-
+                                )
+                              ],
                             ),
                             
                             
                             
 
-                            Container(
-                              child: Center(
-                                child: Text("2"),
-                              ),
+                            Center(
+                              child: Text("2"),
                             ),
-                            Container(
-                              child: Center(
-                                child: Text("3"),
-                              ),
+                            Center(
+                              child: Text("3"),
                             ),
-                            Container(
-                              child: Center(
-                                child: Text("4"),
-                              ),
+                            Center(
+                              child: Text("4"),
                             ),
-                            Container(
-                              child: Center(
-                                child: Text("5"),
-                              ),
+                            Center(
+                              child: Text("5"),
                             ),
-                            Container(
-                              child: Center(
-                                child: Text("6"),
-                              ),
+                            Center(
+                              child: Text("6"),
                             ),
                           ],
                         ),

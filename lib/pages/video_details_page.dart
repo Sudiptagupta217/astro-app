@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../widget/drawer_manu.dart';
 
 class VideoDetails extends StatefulWidget {
@@ -25,40 +23,36 @@ class VideoDetailsState extends State<VideoDetails> {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 25),
-                  margin: EdgeInsets.only(top: 50),
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  margin: const EdgeInsets.only(top: 50),
                   child: Row(
                     children: [
                       GestureDetector(
                         onTap: () {
                           Navigator.of(context).pop();
                         },
-                        child: Container(
-                          child: const Icon(
-                            Icons.arrow_back_ios,
+                        child: const Icon(
+                          Icons.arrow_back_ios,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const Spacer(),
+                      const Text(
+                        "Video details",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
                             color: Colors.white,
-                          ),
-                        ),
+                            fontSize: 22,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 0.5),
                       ),
-                      Spacer(),
-                      Container(
-                        child: const Text(
-                          "Video details",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 22,
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 0.5),
-                        ),
-                      ),
-                      Spacer(),
+                      const Spacer(),
                     ],
                   ),
                 ),
                 Container(
                     width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.only(top: 30),
+                    margin: const EdgeInsets.only(top: 30),
                     //padding: EdgeInsets.only(left: 15, right: 15, bottom: 25),
                     decoration: const BoxDecoration(
                         color: Color(0xFFF8F8F9),
@@ -68,23 +62,30 @@ class VideoDetailsState extends State<VideoDetails> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                            height: 230,
+                        SizedBox(
+                            height: 270,
                             width: MediaQuery.of(context).size.width,
                             child: Stack(children: [
-                              Image.asset(
-                                "assets/images/video.png",
-                                fit: BoxFit.fill,
-                              ),
                               Positioned(
+                                left: 0,
+                                right: 0,
+                                child: SizedBox(
+                                  height: 270,
+                                  child: Image.asset(
+                                    "assets/images/video.png",
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                              ),
+                              const Positioned(
                                 bottom: 15,
                                   right: 20,
                                   child: Icon(Icons.play_circle_outline_sharp,color: Colors.white,size: 30,))
                             ])),
 
                         Container(
-                            padding: EdgeInsets.only(top:20,left: 15, right: 15, bottom: 25),
-                            child: Column(
+                            padding: const EdgeInsets.only(top:20,left: 15, right: 15, bottom: 25),
+                            child:  const Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text("Description",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600),),
@@ -93,7 +94,6 @@ class VideoDetailsState extends State<VideoDetails> {
                                   style: TextStyle(fontSize: 14,color: Colors.black54),),
                                 SizedBox(height: 15,),
                                 Text("More Videos",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600),),
-
                               ],
                             ))
                       ],

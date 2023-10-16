@@ -11,14 +11,43 @@ class AstrologersList extends StatefulWidget {
 }
 
 class _AstrologersListState extends State<AstrologersList> {
-
-
   List<Map<String, dynamic>> allAstro = [
-    {"images": "assets/images/astro.png", "title": "Web Dev"},
-    {"images": "assets/images/astro.png", "title": "Web Design"},
-    {"images": "assets/images/astro.png", "title": "App Design"},
-    {"images": "assets/images/astro.png", "title": "App Design"},
-
+    {
+      "image": "assets/images/astro.png",
+      "name": 'John Dow',
+      "astroType": 'Vasthu, Vedic',
+      "languageKnown": 'Hindi, English, Punjabi',
+      "experience": '7 Years',
+      "rate": '5',
+      "price": '30/min',
+    },
+    {
+      "image": "assets/images/astro.png",
+      "name": 'John Dow',
+      "astroType": 'Vasthu, Vedic',
+      "languageKnown": 'Hindi, English, Punjabi',
+      "experience": '4 Years',
+      "rate": '4',
+      "price": '30/min',
+    },
+    {
+      "image": "assets/images/astro.png",
+      "name": 'John Dow',
+      "astroType": 'Vasthu, Vedic',
+      "languageKnown": 'Hindi, English, Punjabi',
+      "experience": '13 Years',
+      "rate": '3',
+      "price": '30/min',
+    },
+    {
+      "image": "assets/images/astro.png",
+      "name": 'John Dow',
+      "astroType": 'Vasthu, Vedic',
+      "languageKnown": 'Hindi, English, Punjabi',
+      "experience": '11 Years',
+      "rate": '2',
+      "price": '30/min',
+    }
   ];
   int selectedIndex = 1;
 
@@ -31,7 +60,7 @@ class _AstrologersListState extends State<AstrologersList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: DrawerManu(),
+      drawer: DrawerManu(),
       bottomNavigationBar: BottomMenu(
         selectedIndex: selectedIndex,
         onClicked: onClicked,
@@ -39,69 +68,70 @@ class _AstrologersListState extends State<AstrologersList> {
       body: SingleChildScrollView(
         child: Container(
           width: MediaQuery.of(context).size.width,
-
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("assets/images/bg.png"), fit: BoxFit.cover)),
+                  image: AssetImage("assets/images/bg.png"),
+                  fit: BoxFit.cover)),
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 25),
-                margin: EdgeInsets.only(top: 50),
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                margin: const EdgeInsets.only(top: 50),
                 child: Row(
-
                   children: [
                     GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         Navigator.of(context).pop();
                       },
-                      child: Container(
-                        child: Icon(Icons.arrow_back_ios, color: Colors.white,),
+                      child: const Icon(
+                        Icons.arrow_back_ios,
+                        color: Colors.white,
                       ),
                     ),
-                    Spacer(),
-                    Container(
-                      child:Text(
-                        "Astrologers List",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 0.5),
-                      ),
+                    const Spacer(),
+                    const Text(
+                      "Astrologers List",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 0.5),
                     ),
-                    Spacer(),
+                    const Spacer(),
                   ],
                 ),
               ),
-
               Container(
                 width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.only(top: 30),
-                padding: EdgeInsets.only(top: 20, right: 25, left: 25),
-                decoration: BoxDecoration(
+                // height: MediaQuery.of(context).size.height,
+                margin: const EdgeInsets.only(top: 30),
+                padding: const EdgeInsets.only(top: 20, right: 25, left: 25),
+                decoration: const BoxDecoration(
                     color: Color(0xFFF8F8F9),
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(50.0),
                     )),
-                child: Column(
-                  children: [
-
-                       ListView.builder(
-                         padding: EdgeInsets.only(top: 15),
-                        shrinkWrap: true,
-                        physics: BouncingScrollPhysics(),
-                        itemCount: allAstro.length,
-                        itemBuilder: (BuildContext ctxt, int index) => AstroCard(image: allAstro[index]['images'],text: "Connect"),
-
-                      ),
-
-                  ],
+                child: ListView.builder(
+                  padding: const EdgeInsets.only(top: 15),
+                  shrinkWrap: true,
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: allAstro.length,
+                  itemBuilder: (context, index) {
+                    return AstroCard(
+                      image: allAstro[index]['image'],
+                      name: allAstro[index]['name'],
+                      astroType: allAstro[index]['astroType'],
+                      languageKnown: allAstro[index]['languageKnown'],
+                      experience: allAstro[index]['experience'],
+                      callback: () {},
+                      rate: allAstro[index]['rate'],
+                      buttonText: 'Continue',
+                      price: allAstro[index]['price'],
+                    );
+                  },
                 ),
               )
-
             ],
           ),
         ),

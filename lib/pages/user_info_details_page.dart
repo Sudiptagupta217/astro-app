@@ -1,7 +1,7 @@
-import 'package:flutter/foundation.dart';
+import 'package:astro/utils/default_colors.dart';
+import 'package:astro/widget/custom_button.dart';
+import 'package:astro/widget/custom_form_filed.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
 import '../widget/custom_radio.dart';
 
 enum Gender { male, female }
@@ -15,7 +15,11 @@ class DetailsPage extends StatefulWidget {
 
 class DetailsPageState extends State<DetailsPage> {
 
-  Gender _selectedGender = Gender.male; // Initialize with a default value
+  Gender _selectedGender = Gender.male;
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController dobController = TextEditingController();
+  TextEditingController placeNameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,21 +28,21 @@ class DetailsPageState extends State<DetailsPage> {
         child: Container(
          height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage("assets/images/bg.png"),
                   fit: BoxFit.cover)),
           child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 25),
+            margin: const EdgeInsets.symmetric(horizontal: 25),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 55,
                 ),
 
-                Center(
+                const Center(
                   child: Image(
                     image: AssetImage(
                       "assets/images/app_logo.png",
@@ -48,13 +52,13 @@ class DetailsPageState extends State<DetailsPage> {
                   ),
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
 
                 Container(
-                    margin: EdgeInsets.only(bottom: 20),
-                    child: Text(
+                    margin: const EdgeInsets.only(bottom: 20),
+                    child: const Text(
                       "Enter Your Details",
                       style: TextStyle(
                           color: Colors.white,
@@ -64,14 +68,14 @@ class DetailsPageState extends State<DetailsPage> {
 
                 Row(
                   children: <Widget>[
-                    Text(
+                    const Text(
                       "Gender :",
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w500,
                           fontSize: 16),
                     ),
-                    SizedBox(width: 20),
+                    const SizedBox(width: 20),
                     CustomRadio(
                       value: Gender.male,
                       groupValue: _selectedGender,
@@ -81,16 +85,16 @@ class DetailsPageState extends State<DetailsPage> {
                         });
                       },
                       activeColor:
-                          Color(0xFFFDCE2D), //FDCE2D Set the active color
+                           DefaultColor.yellow,
                     ),
-                    SizedBox(width: 5),
-                    Text(
+                    const SizedBox(width: 5),
+                    const Text(
                       'Male',
                       style: TextStyle(
                         color: Colors.white,
                       ),
                     ),
-                    SizedBox(width: 20),
+                    const SizedBox(width: 20),
                     CustomRadio(
                       value: Gender.female,
                       groupValue: _selectedGender,
@@ -99,160 +103,48 @@ class DetailsPageState extends State<DetailsPage> {
                           _selectedGender = value;
                         });
                       },
-                      activeColor: Color(0xFFFDCE2D),
+                      activeColor: DefaultColor.yellow,
                     ),
-                    SizedBox(width: 5),
-                    Text(
+                    const SizedBox(width: 5),
+                    const Text(
                       'Female',
                       style: TextStyle(color: Colors.white),
                     ),
                   ],
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                TextFormField(
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  style: TextStyle(color: Colors.white),
-                  decoration: InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                    filled: true,
-                    fillColor: Color(0x1AFFFFFF),
-                    hintText: "First Name",
-                    hintStyle: TextStyle(
-                        color: Color(0xFFFFFFFF),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Color(0x1AFFFFFF), width: 1),
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Color(0x1AFFFFFF), width: 1),
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    focusColor: Color(0xFFFFFFFF),
-                  ),
-                ),
 
-                SizedBox(
+               CustomFormFiled(controller: firstNameController, hintText: "First Name", keyboardType: TextInputType.text),
+
+                const SizedBox(
                   height: 10,
                 ),
-                TextFormField(
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  style: TextStyle(color: Colors.white),
-                  decoration: InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                    filled: true,
-                    fillColor: Color(0x1AFFFFFF),
-                    hintText: "Last Name",
-                    hintStyle: TextStyle(
-                        color: Color(0xFFFFFFFF),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Color(0x1AFFFFFF), width: 1),
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Color(0x1AFFFFFF), width: 1),
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    focusColor: Color(0xFFFFFFFF),
-                  ),
-                ),
 
-                SizedBox(
+                CustomFormFiled(controller: lastNameController, hintText: "Last Name", keyboardType: TextInputType.text),
+
+                const SizedBox(
                   height: 10,
                 ),
-                TextFormField(
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  style: TextStyle(color: Colors.white),
-                  decoration: InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                    filled: true,
-                    fillColor: Color(0x1AFFFFFF),
-                    hintText: "DOB",
-                    hintStyle: TextStyle(
-                        color: Color(0xFFFFFFFF),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Color(0x1AFFFFFF), width: 1),
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Color(0x1AFFFFFF), width: 1),
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    focusColor: Color(0xFFFFFFFF),
-                  ),
-                ),
 
-                SizedBox(
+                CustomFormFiled(controller: dobController, hintText: "DOB", keyboardType: TextInputType.text),
+
+
+                const SizedBox(
                   height: 10,
                 ),
-                TextFormField(
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  style: TextStyle(color: Colors.white),
-                  decoration: InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                    filled: true,
-                    fillColor: Color(0x1AFFFFFF),
-                    hintText: "Place Of Birth",
-                    hintStyle: TextStyle(
-                        color: Color(0xFFFFFFFF),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Color(0x1AFFFFFF), width: 1),
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0x1AFFFFFF), width: 1),
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    focusColor: Color(0xFFFFFFFF),
-                  ),
-                ),
 
-                Container(
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.only(top: 40,bottom: 20),
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/home");
-                    },
-                    style: TextButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        padding: EdgeInsets.symmetric(
-                            horizontal:
-                                MediaQuery.of(context).size.width * 0.20,
-                            vertical: 21),
-                        elevation: 2,
-                        foregroundColor: const Color(0xFF000000),
-                        backgroundColor: const Color(0xFFFDCE2D)),
-                    child: const Text(
-                      "Submit",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                    ),
-                  ),
-                ),
+                CustomFormFiled(controller: placeNameController,hintText: "Place of Birth", keyboardType: TextInputType.text),
+
+                CustomButton(title: "Submit",
+                  margin: const EdgeInsets.only(top: 20),
+                  padding: EdgeInsets.symmetric(vertical: 21,
+                      horizontal: MediaQuery.of(context).size.width*0.20),
+                  callback: () {
+                  Navigator.pushNamed(context, "/home");
+                },)
               ],
             ),
           ),

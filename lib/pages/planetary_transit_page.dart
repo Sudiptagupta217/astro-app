@@ -1,7 +1,8 @@
-import 'package:flutter/cupertino.dart';
+import 'package:astro/utils/default_colors.dart';
 import 'package:flutter/material.dart';
 import '../widget/buttom_manu.dart';
 import '../widget/drawer_manu.dart';
+import '../widget/planetary_card.dart';
 
 class PlanetaryTransit extends StatefulWidget {
   const PlanetaryTransit({Key? key}) : super(key: key);
@@ -11,6 +12,33 @@ class PlanetaryTransit extends StatefulWidget {
 }
 
 class PlanetaryTransitState extends State<PlanetaryTransit> {
+
+  List<Map<String, dynamic>> planetary = [
+  {
+    'image': 'assets/images/jupiter.png',
+    'titleText': 'Jupiter Transit',
+    'bodyText': 'Know the impact of Guru transit, expect great changes, profits and fulfillment of desire. ',
+    'color':0xfff2deda
+  },
+    {
+      'image': 'assets/images/venus.png',
+      'titleText': 'Jupiter Transit',
+      'bodyText': 'Know the impact of Guru transit, expect great changes, profits and fulfillment of desire. ',
+      'color': 0xffDAF2F1
+    },
+    {
+      'image': 'assets/images/jupiter.png',
+      'titleText': 'Jupiter Transit',
+      'bodyText': 'Know the impact of Guru transit, expect great changes',
+      'color': 0xffdae6f2
+    },
+    {
+      'image': 'assets/images/venus.png',
+      'titleText': 'Jupiter Transit',
+      'bodyText': 'Know the impact of Guru transit, expect great changes, profits and fulfillment of desire. Know the impact of Guru transit, expect great changes, profits and fulfillment of desire. ',
+      'color': 0xfff2dada
+    },
+  ];
   int selectedIndex = 0;
 
   void onClicked(int index) {
@@ -29,51 +57,47 @@ class PlanetaryTransitState extends State<PlanetaryTransit> {
       body: SingleChildScrollView(
         child:  Container(
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage("assets/images/bg.png"),
                   fit: BoxFit.cover)),
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 25),
-                margin: EdgeInsets.only(top: 60),
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                margin: const EdgeInsets.only(top: 60),
                 child: Row(
                   children: [
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).pop();
                       },
-                      child: Container(
-                        child: Icon(
-                          Icons.arrow_back_ios,
+                      child: const Icon(
+                        Icons.arrow_back_ios,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const Spacer(),
+                    const Text(
+                      "Planetary Transit",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
                           color: Colors.white,
-                        ),
-                      ),
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 0.5),
                     ),
-                    Spacer(),
-                    Container(
-                      child: Text(
-                        "Planetary Transit",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 0.5),
-                      ),
-                    ),
-                    Spacer(),
+                    const Spacer(),
                   ],
                 ),
               ),
 
               Container(
                 width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.only(top: 30),
-                padding: EdgeInsets.only(top: 30, right: 20, left: 20),
-                decoration: BoxDecoration(
-                    color: Color(0xFFF8F8F9),
+                margin: const EdgeInsets.only(top: 30),
+                padding: const EdgeInsets.only(top: 30, right: 20, left: 20),
+                decoration: const BoxDecoration(
+                    color: DefaultColor.bg_color,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(50.0),
                     )
@@ -81,210 +105,18 @@ class PlanetaryTransitState extends State<PlanetaryTransit> {
                 child:
                 Column(
                   children: [
-                    Stack(
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: 160,
-                        ),
-
-
-                        Positioned(
-                          top: 27,
-                          left: 2,
-                          right: 2,
-                          bottom: 2,
-                          child: Container(
-                            padding: EdgeInsets.only(top: 20,left: 65,right: 10),
-                            width: MediaQuery.of(context).size.width,
-                            height: 130,
-                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Color(
-                                0xfff2deda),),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Jupiter Transit",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600),),
-                                SizedBox(height: 10,),
-                                Text("Know the impact of Guru transit, expect great changes, profits and fulfillment of desire. ",maxLines: 4,
-                                style: TextStyle(fontSize: 15)),
-
-                              ],
-                            ),
-                          ),
-                        ),
-
-                        Positioned(
-                          left: 9,
-                          child: Container(
-                            width: 70,
-                            height: 165,
-                            child: Column(
-                              children: [
-                                ClipRRect
-                                  (borderRadius: BorderRadius.circular(50),child: Image.asset('assets/images/jupiter.png')),
-                              ],
-                            ),
-                          ),
-                        )
-
-
-                      ],
-                    ),
-                    SizedBox(height: 10,),
-                    Stack(
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: 160,
-                        ),
-
-
-                        Positioned(
-                          top: 27,
-                          left: 2,
-                          right: 2,
-                          bottom: 2,
-                          child: Container(
-                            padding: EdgeInsets.only(top: 20,left: 65,right: 10),
-                            width: MediaQuery.of(context).size.width,
-                            height: 130,
-                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Color(0xffDAF2F1),),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Jupiter Transit",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600),),
-                                SizedBox(height: 10,),
-                                Text("Know the impact of Guru transit, expect great changes, profits and fulfillment of desire. ",maxLines: 4,
-                                    style: TextStyle(fontSize: 15)),
-
-                              ],
-                            ),
-                          ),
-                        ),
-
-                        Positioned(
-                          left: 9,
-                          child: Container(
-                            width: 70,
-                            height: 165,
-                            child: Column(
-                              children: [
-                                ClipRRect
-                                  (borderRadius: BorderRadius.circular(50),child: Image.asset('assets/images/venus.png')),
-                              ],
-                            ),
-                          ),
-                        )
-
-
-                      ],
-                    ),
-                    SizedBox(height: 10,),
-                    Stack(
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: 160,
-                        ),
-
-
-                        Positioned(
-                          top: 27,
-                          left: 2,
-                          right: 2,
-                          bottom: 2,
-                          child: Container(
-                            padding: EdgeInsets.only(top: 20,left: 65,right: 10),
-                            width: MediaQuery.of(context).size.width,
-                            height: 130,
-                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Color(
-                                0xffdae6f2),),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Jupiter Transit",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600),),
-                                SizedBox(height: 10,),
-                                Text("Know the impact of Guru transit, expect great changes, profits and fulfillment of desire. ",maxLines: 4,
-                                    style: TextStyle(fontSize: 15)),
-
-                              ],
-                            ),
-                          ),
-                        ),
-
-                        Positioned(
-                          left: 9,
-                          child: Container(
-                            width: 70,
-                            height: 165,
-                            child: Column(
-                              children: [
-                                ClipRRect
-                                  (borderRadius: BorderRadius.circular(50),child: Image.asset('assets/images/jupiter.png')),
-                              ],
-                            ),
-                          ),
-                        )
-
-
-                      ],
-                    ),
-                    SizedBox(height: 10,),
-                    Stack(
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: 160,
-                        ),
-
-
-                        Positioned(
-                          top: 27,
-                          left: 2,
-                          right: 2,
-                          bottom: 2,
-                          child: Container(
-                            padding: EdgeInsets.only(top: 20,left: 65,right: 10),
-                            width: MediaQuery.of(context).size.width,
-                            height: 130,
-                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Color(
-                                0xfff2dada),),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Jupiter Transit",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600),),
-                                SizedBox(height: 10,),
-                                Text("Know the impact of Guru transit, expect great changes, profits and fulfillment of desire. ",maxLines: 4,
-                                    style: TextStyle(fontSize: 15)),
-
-                              ],
-                            ),
-                          ),
-                        ),
-
-                        Positioned(
-                          left: 9,
-                          child: Container(
-                            width: 70,
-                            height: 165,
-                            child: Column(
-                              children: [
-                                ClipRRect
-                                  (borderRadius: BorderRadius.circular(50),child: Image.asset('assets/images/venus.png')),
-                              ],
-                            ),
-                          ),
-                        )
-
-
-                      ],
-                    ),
-                    SizedBox(height: 10,),
-
+                    ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: planetary.length,
+                      itemBuilder: (context, index) {
+                      return  PlanetaryCard(image: planetary[index]['image'],
+                              titleText: planetary[index]['titleText'],
+                              bodyText: planetary[index]['bodyText'],
+                              color: planetary[index]['color'],);
+                    },)
                   ],
                 ),
-
-
               )
             ],
           ),

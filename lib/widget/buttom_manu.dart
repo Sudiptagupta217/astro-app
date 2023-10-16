@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class BottomMenu extends StatelessWidget {
   final selectedIndex;
   ValueChanged<int> onClicked;
-  BottomMenu({this.selectedIndex, required this.onClicked});
+  BottomMenu({super.key, this.selectedIndex, required this.onClicked});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
             topRight: Radius.circular(30)),
         boxShadow: [
@@ -56,8 +56,8 @@ class BottomMenu extends StatelessWidget {
             ),
           ],
           currentIndex: selectedIndex,
-          selectedItemColor: Color(0xFF341A9D),
-          unselectedItemColor: Color(0xFF9C9C9C),
+          selectedItemColor: const Color(0xFF341A9D),
+          unselectedItemColor: const Color(0xFF9C9C9C),
 
 
           onTap: (index){

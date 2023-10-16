@@ -1,20 +1,25 @@
+import 'package:astro/utils/Custom_Font.dart';
+import 'package:astro/utils/default_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class CustomFormFiled extends StatefulWidget {
-  final String title;
+  String? title;
   final String hintText;
-  final String validator;
+  int? maxlength;
   final TextInputType keyboardType;
-  String?  textInputFormatter;
+  TextEditingController? controller;
+  List<TextInputFormatter>? inputFormatters;
 
-   CustomFormFiled({Key?key,
-    required this.title,
-    required this.hintText,
-    required this.validator,
-    required this.keyboardType,
-     this.textInputFormatter
-  }):super(key: key);
+  CustomFormFiled(
+      {Key? key,
+       this.title,
+      required this.hintText,
+      required this.keyboardType,
+      this.inputFormatters,
+      this.maxlength,
+      this.controller})
+      : super(key: key);
 
   @override
   State<CustomFormFiled> createState() => _CustomFormFiledState();
@@ -23,62 +28,63 @@ class CustomFormFiled extends StatefulWidget {
 class _CustomFormFiledState extends State<CustomFormFiled> {
   @override
   Widget build(BuildContext context) {
-    return
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+       widget.title!=null? Container(
+            margin: const EdgeInsets.only(bottom: 20),
+            child: Text(widget.title!,
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 17,
+                  fontWeight: FontWeight.w400,
+                fontFamily: Poppins
+              ),
+            )):Container(),
 
-      Column(
-        children: [
-          Container(
-              margin: EdgeInsets.only(bottom: 20),
-              child: Text(widget.title,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w400),
-              )),
-          TextFormField(
+        TextFormField(
+          controller: widget.controller,
           autovalidateMode: AutovalidateMode.onUserInteraction,
-          style: TextStyle(color: Colors.white),
-         // keyboardType: TextInputType.numberWithOptions(decimal: false),
+          style: const TextStyle(color: Colors.white),
+          // keyboardType: TextInputType.numberWithOptions(decimal: false),
           keyboardType: widget.keyboardType,
           // inputFormatters: <TextInputFormatter>[
           //   FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
           // ],
-    inputFormatters: <TextInputFormatter>[
-       FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-     ],
+          inputFormatters: widget.inputFormatters,
+          maxLength: widget.maxlength,
 
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return widget.validator;
-            }
-            return null;
-          },
+          // validator: (value) {
+          //   if (value == null || value.isEmpty) {
+          //     return widget.validator;
+          //   }
+          //   return null;
+          // },
           decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(
-                vertical: 20, horizontal: 20),
+            contentPadding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
             filled: true,
-            fillColor: Color(0x1AFFFFFF),
+            fillColor: const Color(0x1AFFFFFF),
             hintText: widget.hintText,
-            hintStyle: TextStyle(
+            hintStyle: const TextStyle(
                 color: Color(0xFFFFFFFF),
                 fontSize: 18,
+                fontFamily: Inter,
                 fontWeight: FontWeight.w500),
             focusedBorder: OutlineInputBorder(
-              borderSide:
-              BorderSide(color: Color(0x1AFFFFFF), width: 1),
+              borderSide: const BorderSide(color: Color(0x1AFFFFFF), width: 1),
               borderRadius: BorderRadius.circular(20.0),
             ),
             enabledBorder: OutlineInputBorder(
-              borderSide:
-              BorderSide(color: Color(0x1AFFFFFF), width: 1),
+              borderSide: const BorderSide(color: Color(0x1AFFFFFF), width: 1),
               borderRadius: BorderRadius.circular(20.0),
             ),
-            focusColor: Color(0xFFFFFFFF),
+            focusColor: const Color(0xFFFFFFFF),
             prefixIconColor: Colors.white,
           ),
           //initialCountryCode: 'IN',
-    ),
-        ],
-      );
+        ),
+      ],
+    );
   }
 }

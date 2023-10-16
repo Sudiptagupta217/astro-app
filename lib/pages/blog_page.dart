@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import '../widget/drawer_manu.dart';
 
 class Blog extends StatefulWidget {
+  const Blog({super.key});
+
   @override
   State<StatefulWidget> createState() => BlogState();
 }

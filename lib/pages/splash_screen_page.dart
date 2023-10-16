@@ -1,5 +1,4 @@
 import 'package:astro/pages/account_auth.dart';
-import 'package:astro/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 
@@ -17,9 +16,9 @@ class _SplashScreenState extends State<SplashScreen> {
     _navigatetohome();
   }
   _navigatetohome() async {
-    await Future.delayed(Duration(milliseconds: 3000), () {});
+    await Future.delayed(const Duration(milliseconds: 3000), () {});
     Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => AccountAuth()));
+        MaterialPageRoute(builder: (context) => const AccountAuth()));
   }
 
   @override
@@ -28,13 +27,13 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
         image: DecorationImage(
             image: AssetImage("assets/images/bg.png"),
           fit: BoxFit.cover
         )
         ),
-        child: Image(
+        child: const Image(
           image: AssetImage("assets/images/app_logo.png"),
         ),
       ),
