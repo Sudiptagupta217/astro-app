@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../utils/Custom_Font.dart';
+
 class BottomPriceBar extends StatefulWidget {
   @override
   State<BottomPriceBar> createState() => _BottomPriceBarState();
@@ -32,11 +34,34 @@ class _BottomPriceBarState extends State<BottomPriceBar> {
           child: Row(
             children: [
               const SizedBox(width: 10,),
-              const Text("Rs.3500",
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                   Text("Rs.3500",
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontFamily: Inter,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black),
+                  ),
+                  Stack(
+                      children:[
+                        Text(
+                          "Rs.4000",
+                          style: const TextStyle(
+                              color: Colors.black54,
+                              fontFamily: Inter,
+                              fontSize: 10),),
+                        const Positioned(
+                            top: 1,
+                            bottom: 0,
+                            left: 0,
+                            right: 0,
+                            child:  Divider(color: Colors.black,height: 4,))
+                      ]
+                  ),
+                ],
               ),
               const Spacer(),
 
@@ -87,7 +112,7 @@ class _BottomPriceBarState extends State<BottomPriceBar> {
                     foregroundColor: Colors.white,
                     backgroundColor: const Color(0xFF0341A9)
                 ),
-                child: const Text("Cart"),
+                child: const Text("Cart",style: TextStyle(fontFamily: Raleway,fontSize: 14),),
               ),
             ],
           ),

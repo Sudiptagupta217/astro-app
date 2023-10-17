@@ -1,3 +1,4 @@
+import 'package:astro/utils/Custom_Font.dart';
 import 'package:flutter/material.dart';
 
 import '../widget/buttom_manu.dart';
@@ -119,6 +120,7 @@ class _WalletaPageState extends State<WalletPage> {
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,
+                          fontFamily: Inter,
                           fontWeight: FontWeight.w600),
                     ),
                     const SizedBox(
@@ -174,7 +176,8 @@ class _WalletaPageState extends State<WalletPage> {
                                       "Pay",
                                       style: TextStyle(
                                           color: Color(0xff341A9D),
-                                          fontSize: 15,
+                                          fontSize: 12,
+                                          fontFamily: Poppins,
                                           fontWeight: FontWeight.w500),
                                     )
                                   ],
@@ -205,7 +208,8 @@ class _WalletaPageState extends State<WalletPage> {
                                     "Details",
                                     style: TextStyle(
                                         color: Color(0xff341A9D),
-                                        fontSize: 15,
+                                        fontSize: 12,
+                                        fontFamily: Poppins,
                                         fontWeight: FontWeight.w500),
                                   )
                                 ],
@@ -230,6 +234,7 @@ class _WalletaPageState extends State<WalletPage> {
                       "Cards",
                       style: TextStyle(
                           fontSize: 20,
+                          fontFamily: Raleway,
                           color: Colors.black,
                           fontWeight: FontWeight.w600),
                     ),
@@ -259,7 +264,9 @@ class _WalletaPageState extends State<WalletPage> {
                         const Text(
                           "Recent Transactions",
                           style: TextStyle(
-                              fontSize: 22, fontWeight: FontWeight.w600),
+                              fontSize: 20,
+                              fontFamily: Raleway,
+                              fontWeight: FontWeight.w600),
                         ),
                         GestureDetector(
                             onTap: () {
@@ -294,17 +301,20 @@ class _WalletaPageState extends State<WalletPage> {
                                 ),
                                 title: Text(value['paymenttype'].toString(),
                                     style: const TextStyle(
-                                        fontSize: 16,
+                                        fontSize: 14,
+                                        fontFamily: Poppins,
                                         fontWeight: FontWeight.w600)),
                                 subtitle: Text(value['status'].toString(),
                                     style: const TextStyle(
                                         fontSize: 12,
                                         color: Colors.green,
-                                        fontWeight: FontWeight.w600)),
+                                        fontFamily: Poppins,
+                                        fontWeight: FontWeight.w500)),
                                 trailing: Text(
                                   value['price'].toString(),
                                   style: const TextStyle(
                                       fontSize: 16,
+                                      fontFamily: Poppins,
                                       fontWeight: FontWeight.w700),
                                 ),
                               ),

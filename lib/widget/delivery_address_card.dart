@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../utils/Custom_Font.dart';
+
 class DeliveryAddressCard extends StatelessWidget {
   final String address1;
   final String address2;
@@ -31,11 +33,11 @@ class DeliveryAddressCard extends StatelessWidget {
             children: [
               Text(address1,
                 style: const TextStyle(
-                    fontSize: 16,
+                    fontSize: 14,fontFamily: Poppins,
                     fontWeight: FontWeight.w500),
               ),
               Text(address2,
-                style: const TextStyle(color: Colors.black54,fontSize: 12),
+                style: const TextStyle(color: Colors.black54,fontFamily: Poppins,fontSize: 12),
               ),
             ],
           ),

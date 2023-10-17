@@ -96,7 +96,7 @@ class _DailyHoroscopeState extends State<DailyHoroscope> {
                         crossAxisCount: 3,
                         childAspectRatio: 1.0,
                         mainAxisSpacing: 20.0,
-                        crossAxisSpacing: 15.0,
+                        crossAxisSpacing: 13.0,
                         mainAxisExtent: 130,
                       ),
                       shrinkWrap: true,

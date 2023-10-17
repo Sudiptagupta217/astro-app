@@ -161,7 +161,7 @@ class _AccountAuthState extends State<AccountAuth> {
           const Text(
             "How would you like to get \nthe code?",
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 24,fontFamily: Inter, fontWeight: FontWeight.w600,color: Colors.white),
+            style: TextStyle(fontSize: 22,fontFamily: Inter, fontWeight: FontWeight.w600,color: Colors.white),
           ),
           const SizedBox(
             height: 25,
@@ -173,7 +173,7 @@ class _AccountAuthState extends State<AccountAuth> {
                   padding: EdgeInsets.symmetric(
                       vertical: 15,
                       horizontal: MediaQuery.of(context).size.width*0.15),
-                  callback: () {
+                    callback: () {
                     Navigator.pop(context);
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const OtpVerification(),));
                   }),

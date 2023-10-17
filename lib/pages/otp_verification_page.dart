@@ -1,3 +1,4 @@
+import 'package:astro/utils/Custom_Font.dart';
 import 'package:astro/widget/custom_button.dart';
 import 'package:astro/widget/custom_form_filed.dart';
 import 'package:flutter/material.dart';
@@ -58,15 +59,16 @@ class _OtpVerificationState extends State<OtpVerification> {
                       "Resend OTP On SMS",
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400),
+                          fontSize: 14,
+                          fontFamily: Poppins,
+                          fontWeight: FontWeight.w500),
                     )),
 
                 CustomButton(
                   title: "Submit",
                   margin: const EdgeInsets.only(top: 20),
                   padding: EdgeInsets.symmetric(
-                      vertical: 21,
+                      vertical: 19,
                       horizontal: MediaQuery.of(context).size.height * 0.10),
                   callback: () {
                     Navigator.pushNamed(context, "/details");

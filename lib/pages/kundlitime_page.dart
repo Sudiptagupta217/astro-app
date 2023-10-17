@@ -1,6 +1,7 @@
 import 'package:astro/utils/default_colors.dart';
 import 'package:astro/widget/custom_button.dart';
 import 'package:flutter/material.dart';
+import '../utils/Custom_Font.dart';
 import '../widget/custom2_form_filed.dart';
 
 class KundaliTime extends StatefulWidget {
@@ -70,7 +71,7 @@ class KundaliTimeState extends State<KundaliTime> {
                     padding: EdgeInsets.only(left: 5.0,top: 10),
                     child: Text(
                       "Enter Your Birth Time",
-                      style: TextStyle(fontSize: 17, color: Colors.black,fontWeight: FontWeight.w600),
+                      style: TextStyle(fontSize: 17, fontFamily: Raleway,color: Colors.black,fontWeight: FontWeight.w600),
                     ),
                   ),
 
@@ -89,22 +90,25 @@ class KundaliTimeState extends State<KundaliTime> {
                      // Icon(Icons.check_box_outline_blank,size: 17,color: Colors.yellow.shade800,),
                       SizedBox(
                         height: 20,
-                        width: 24,
-                        child: Checkbox(
-                          activeColor: DefaultColor.yellow,
-                          side: MaterialStateBorderSide.resolveWith(
-                                (states) =>
-                                const BorderSide(width: 1.2, color: DefaultColor.yellow),
+                        width: 30,
+                        child: Transform.scale(
+                          scale: 0.8,
+                          child: Checkbox(
+                            activeColor: DefaultColor.yellow,
+                            side: MaterialStateBorderSide.resolveWith(
+                                  (states) =>
+                                  const BorderSide(width: 1.5, color: DefaultColor.yellow),
+                            ),
+                            value: value,
+                            onChanged: (value) {
+                              setState(() {
+                                this.value = value!;
+                              });
+                            },
                           ),
-                          value: value,
-                          onChanged: (value) {
-                            setState(() {
-                              this.value = value!;
-                            });
-                          },
                         ),
                       ),
-                      const Text("Don’t know my time of birth",style: TextStyle(color: Colors.black,fontSize: 15),)
+                      const Text("Don’t know my time of birth",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w500,fontFamily: Poppins,fontSize: 12),)
                     ],
                   ),
                   const SizedBox(
@@ -115,7 +119,7 @@ class KundaliTimeState extends State<KundaliTime> {
                  foregroundColor: DefaultColor.black,
                  padding: EdgeInsets.symmetric( horizontal:
                MediaQuery.of(context).size.width * 0.22,
-                   vertical: 20), callback: () {
+                   vertical: 19), callback: () {
                  Navigator.pushNamed(context, "/kundaliplace");
                    },),
                   const SizedBox(height: 30,)

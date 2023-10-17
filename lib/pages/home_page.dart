@@ -1,3 +1,4 @@
+import 'package:astro/utils/Custom_Font.dart';
 import 'package:astro/widget/buttom_manu.dart';
 import 'package:astro/widget/drawer_manu.dart';
 import 'package:expandable_text/expandable_text.dart';
@@ -7,6 +8,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import '../utils/default_colors.dart';
 import '../widget/add_card.dart';
 import '../widget/popurar_astro_card.dart';
+import '../widget/user_feedback.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -19,6 +21,10 @@ class _HomeScreenState extends State<HomeScreen> {
   TextEditingController searchController = TextEditingController();
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   int selectedIndex = 0;
+  final int ratecount = 5;
+  final IconData iconData = Icons.star;
+  final List<double> progressValues = [0.6, 0.4, 0.6, 0.8, 1.0];
+
 
   void onClicked(int index) {
     setState(() {
@@ -29,6 +35,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     int _currentIndex = 0;
+    final int ratecount = 5;
+    final IconData iconData = Icons.star;
     CarouselController _carouselController = CarouselController();
     final List<String> images = [
       'assets/images/rectangle.png',
@@ -36,7 +44,23 @@ class _HomeScreenState extends State<HomeScreen> {
       'assets/images/rectangle.png',
     ];
 
+    final List feedback = [
+      {
+        "name":"Anonymous",
+        "image":"assets/images/profile.png",
+        "text":"Amazing astrologer mostly all doubts are clear.",
+        "ratecount":5
+      },
+      {
+        "name":"Farnaz",
+        "image":"assets/images/profile1.png",
+        "text":"Astrologer  gently answered to my questions and shared remedial advise which would create good vibes for marital prosperity with my husband",
+        "ratecount":5
+      },
+    ];
+
     return Scaffold(
+      backgroundColor: DefaultColor.bg_color,
       key: _key,
       drawer: DrawerManu(),
       bottomNavigationBar: BottomMenu(
@@ -74,14 +98,19 @@ class _HomeScreenState extends State<HomeScreen> {
                         Row(
                           children: [
                             const Text(
-                              "Hi, Tara",
+                              "Hello, Tara",
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 24,
+                                  fontSize: 20,
+                                  fontFamily: Lato,
                                   fontWeight: FontWeight.w700,
                                   letterSpacing: 0.02),
                             ),
                             Stack(children: [
+                              const Icon(
+                                Icons.notifications_none,
+                                color: Colors.white,
+                              ),
                               Positioned(
                                   top: 0,
                                   right: 0,
@@ -99,16 +128,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                           color: Colors.white, fontSize: 9),
                                     )),
                                   )),
-                              const Icon(
-                                Icons.notifications_none,
-                                color: Colors.white,
-                              )
+
                             ]),
                           ],
                         ),
                         const Text(
                           "Welcome to Astrology",
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.white,fontFamily: Lato,fontSize: 11),
                         ),
                       ],
                     ),
@@ -159,7 +185,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: TextField(
                                 controller: searchController,
                                 decoration: InputDecoration(
-                                    hintText: "Search",
+                                    hintText: "Search Here",
                                     focusedBorder: OutlineInputBorder(
                                       borderSide:
                                           const BorderSide(color: Colors.white),
@@ -205,7 +231,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           horizontal: 6, vertical: 17.5),
                                       child: Text(
                                         "Daily Horoscope ",
-                                        style: TextStyle(fontSize: 15),
+                                        style: TextStyle(fontSize: 15,fontFamily: Raleway,fontWeight: FontWeight.w600),
                                       ),
                                     )),
                               ),
@@ -230,12 +256,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                           horizontal: 6, vertical: 17.5),
                                       child: Text(
                                         "Live Astrology ",
-                                        style: TextStyle(fontSize: 15),
+                                        style: TextStyle(fontSize: 15,fontFamily: Raleway,fontWeight: FontWeight.w600),
                                       ),
                                     )),
                               ),
                             ],
                           ),
+                          const SizedBox(height: 10,),
                           Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 20.0),
@@ -249,7 +276,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     const Text(
                                       "Daily Horoscope",
                                       style: TextStyle(
-                                          fontSize: 22,
+                                          fontSize: 22,fontFamily: Raleway,
                                           fontWeight: FontWeight.w800),
                                     ),
                                     GestureDetector(
@@ -257,9 +284,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                           Navigator.pushNamed(
                                               context, "/dailyhoroscope");
                                         },
-                                        child: const Text(
+                                        child:  const Text(
                                           "See All",
-                                          style: TextStyle(fontSize: 14),
+                                          style: TextStyle(fontSize: 14,fontFamily: Poppins,color: Color(0xff1E1E1E),fontWeight: FontWeight.w500),
                                         )),
                                   ],
                                 ),
@@ -514,7 +541,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     const Text(
                                       "Kundali",
                                       style: TextStyle(
-                                          fontSize: 15,
+                                          fontSize: 14,fontFamily: Poppins,
                                           fontWeight: FontWeight.w500),
                                     )
                                   ],
@@ -546,7 +573,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     const Text(
                                       "Match Making",
                                       style: TextStyle(
-                                          fontSize: 15,
+                                          fontSize: 14,fontFamily: Poppins,
                                           fontWeight: FontWeight.w500),
                                     )
                                   ],
@@ -577,7 +604,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     const Text(
                                       "Shubh Muhurat",
                                       style: TextStyle(
-                                          fontSize: 15,
+                                          fontSize: 14,fontFamily: Poppins,
                                           fontWeight: FontWeight.w500),
                                     )
                                   ],
@@ -600,7 +627,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 const Text(
                                   "Most Popular",
                                   style: TextStyle(
-                                      fontSize: 22,
+                                      fontSize: 22,fontFamily: Raleway,
                                       fontWeight: FontWeight.w800),
                                 ),
                                 GestureDetector(
@@ -610,7 +637,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     },
                                     child: const Text(
                                       "See All",
-                                      style: TextStyle(fontSize: 14),
+                                      style: TextStyle(fontSize: 14,fontFamily: Poppins,color: Color(0xff1E1E1E),fontWeight: FontWeight.w500),
                                     )),
                               ],
                             ),
@@ -655,7 +682,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               children: <Widget>[
                                 Container(
                                   width:
-                                      MediaQuery.of(context).size.width * 0.48,
+                                      MediaQuery.of(context).size.width * 0.54,
                                   padding: const EdgeInsets.only(
                                       left: 25, top: 30, bottom: 30),
                                   child: Column(
@@ -670,7 +697,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         child: const Text(
                                           "Trending Consultations",
                                           style: TextStyle(
-                                              fontSize: 22,
+                                              fontSize: 22,fontFamily: Raleway,
                                               fontWeight: FontWeight.w800,
                                               color: Color(0xFFFFFFFF)),
                                         ),
@@ -682,7 +709,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         "Astrology is a language, If you want to understand this language ,speak to us !",
                                         style: TextStyle(
                                             fontSize: 14,
-                                            height: 1.8,
+                                            height: 1.8,fontFamily: Poppins,
                                             color: Color(0xFFFFFFFF)),
                                       ),
                                       const SizedBox(
@@ -691,7 +718,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       const Text(
                                         "Swipe ",
                                         style: TextStyle(
-                                            fontSize: 16,
+                                            fontSize: 16,fontFamily: Poppins,
                                             fontWeight: FontWeight.w500,
                                             color: Color(0xFFFFFFFF)),
                                       ),
@@ -852,7 +879,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 const Text(
                                   "Traning Videos",
                                   style: TextStyle(
-                                      fontSize: 22,
+                                      fontSize: 22,fontFamily: Raleway,
                                       fontWeight: FontWeight.w800),
                                 ),
                                 GestureDetector(
@@ -861,7 +888,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     },
                                     child: const Text(
                                       "See All",
-                                      style: TextStyle(fontSize: 14),
+                                      style: TextStyle(fontSize: 14,fontFamily: Poppins,color: Color(0xff1E1E1E),fontWeight: FontWeight.w500),
                                     )),
                               ],
                             ),
@@ -902,7 +929,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 const Text(
                                   "Blogs",
                                   style: TextStyle(
-                                      fontSize: 22,
+                                      fontSize: 22,fontFamily: Raleway,
                                       fontWeight: FontWeight.w800),
                                 ),
                                 GestureDetector(
@@ -911,7 +938,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     },
                                     child: const Text(
                                       "See All",
-                                      style: TextStyle(fontSize: 14),
+                                      style: TextStyle(fontSize: 14,fontFamily: Poppins,color: Color(0xff1E1E1E),fontWeight: FontWeight.w500),
                                     )),
                               ],
                             ),
@@ -968,6 +995,101 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                     ),
+
+                    //Feedback
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      padding: EdgeInsets.symmetric(vertical: 20,horizontal: 10),
+                      margin: EdgeInsets.only(top: 10),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.2),
+                            blurRadius: 10,
+                            spreadRadius: 2,
+                            offset: Offset(0, 4), // Offset to apply shadow at the bottom
+                          ),
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.1),
+                            blurRadius: 10,
+                            spreadRadius: 20,
+                            offset: Offset(0, -2), // Offset to apply shadow at the bottom
+                          ),
+                        ],
+                      ),
+                      child:  Column(
+                        children: [
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width*0.40,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    const Text(
+                                      "Feedbacks",
+                                      style: TextStyle(
+                                          fontFamily: "Raleway",
+                                          fontSize: 19, fontWeight: FontWeight.w700),
+                                    ),
+                                    SizedBox(height: 15,),
+                                    Container(
+                                      height: 45,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          Text("$ratecount",style: TextStyle(fontSize: 45,fontFamily: "Inter",fontWeight: FontWeight.w500),),
+                                          Text("/5",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)
+                                        ],
+                                      ),
+                                    ),
+
+                                    SizedBox(height: 15,),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: List.generate(
+                                        ratecount,
+                                            (index) => Icon(iconData,color: DefaultColor.yellow,size: 17,),
+                                      ),
+                                    ),
+                                    Text("350 Ratings",style: TextStyle(fontSize: 14,color: Color(0xffb3b3b3)),)
+
+
+                                  ],
+                                ),
+                              ),
+
+
+                              Container(
+                                  width: MediaQuery.of(context).size.width*0.5,
+                                  child: Column(
+                                    children: List.generate(
+                                      progressValues.length,
+                                          (index) => buildProgressWidget(index),
+                                    ),
+                                  )
+                              )
+                            ],
+                          ),
+
+
+                          ListView.builder(
+                            itemCount: feedback.length,
+                            physics: NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemBuilder: (context, index) {
+                            return UserFeedback(userName: feedback[index]['name'],
+                              userimage: feedback[index]['image'],
+                              text: feedback[index]['text'],
+                              ratecount: feedback[index]["ratecount"],);
+                          },)
+
+
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               )
@@ -975,6 +1097,42 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
+    );
+  }
+  Widget buildProgressWidget(int index) {
+    double progress = progressValues[index];
+    int number = progressValues.length - index;
+
+    return Row(
+
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+
+        Text(
+          number.toString(),
+          style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
+        ),
+        SizedBox(width: 10,height: 30,),
+        Container(
+          width: MediaQuery.of(context).size.width*0.4,
+          height: 12,
+          decoration: BoxDecoration(
+            color: Colors.grey[300],
+            borderRadius: BorderRadius.circular(5),
+          ),
+          child: FractionallySizedBox(
+            alignment: Alignment.centerLeft,
+            widthFactor: progress,
+            child: Container(
+              decoration: BoxDecoration(
+                color: DefaultColor.yellow,
+                borderRadius: BorderRadius.circular(5),
+              ),
+            ),
+          ),
+        ),
+
+      ],
     );
   }
 }

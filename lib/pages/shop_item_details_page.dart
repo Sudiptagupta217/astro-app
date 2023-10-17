@@ -1,3 +1,4 @@
+import 'package:astro/utils/Custom_Font.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -122,7 +123,7 @@ class ShopItemDetailsState extends State<ShopItemDetails> {
                             const Text(
                               "Rahu Yantra",
                               style: TextStyle(
-                                  fontSize: 26, fontWeight: FontWeight.w600),
+                                  fontSize: 29,fontFamily: Poppins, fontWeight: FontWeight.bold),
                             ),
                             const SizedBox(
                               height: 5,
@@ -132,13 +133,14 @@ class ShopItemDetailsState extends State<ShopItemDetails> {
                                 Text(
                                   "Category: ",
                                   style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
+                                    fontSize: 14,
+                                    fontFamily: Inter,
+                                    fontWeight: FontWeight.w600,
                                   ),
                                 ),
                                 Text(
                                   "Yantras",
-                                  style: TextStyle(color: Colors.black54),
+                                  style: TextStyle(color: Colors.black54, fontFamily: Inter,fontSize: 14),
                                 ),
                               ],
                             ),
@@ -151,12 +153,14 @@ class ShopItemDetailsState extends State<ShopItemDetails> {
                                 Text(
                                   "Tags: ",
                                   style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500),
+                                      fontSize: 14,
+                                      fontFamily: Inter,
+                                      fontWeight: FontWeight.w600),
                                 ),
                                 Text(
                                   "Tags: Rahu Yantra, Rahu Yantra \n Benefits, Yantra Locket",
-                                  style: TextStyle(color: Colors.black54),
+                                  style: TextStyle(color: Colors.black54, fontSize: 14,
+                                    fontFamily: Inter,),
                                 ),
                               ],
                             ),
@@ -169,12 +173,14 @@ class ShopItemDetailsState extends State<ShopItemDetails> {
                             const Text(
                               "About this",
                               style: TextStyle(
-                                  fontSize: 19, fontWeight: FontWeight.w600),
+                                  fontSize: 19,
+                                  fontFamily: Raleway, fontWeight: FontWeight.w600),
                             ),
                             const SizedBox(height: 5),
                             const Text(
                               "Rahu yantra is the most powerful yantra, whose Rahu is weak. They should wear this yantra, without any second thought. But make sure the provide yantra should be energizing otherwise it will not work. According to astrology, Saturn, Rahu, and Ketu planets have been considering sinful planets. The presence of these planets in a person’s horoscope often gives inauspicious results. If there is a sinful planet of the planet Swami in the horoscope of a person, then this planet gives auspicious results to that person. If we talk about the Rahu planet then this planet is know as the Prapancha planet.",
-                              style: TextStyle(color: Colors.black54),
+                              style: TextStyle(color: Colors.black54, fontSize: 14,
+                                fontFamily: Inter,),
                             ),
                             const SizedBox(
                               height: 10,

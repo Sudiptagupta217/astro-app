@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:astro/utils/Custom_Font.dart';
 import 'package:astro/utils/default_colors.dart';
 import 'package:astro/widget/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -106,7 +107,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   child: CircleAvatar(
                                     radius: 80,
                                     backgroundImage: _imageFile == null
-                                        ? const AssetImage('assets/images/user.png') as ImageProvider<Object>
+                                        ?  const AssetImage('assets/images/user.png') as ImageProvider<Object>
                                         : FileImage(File(_imageFile!.path)),
                                   )
                                   )),
@@ -140,15 +141,16 @@ class _ProfilePageState extends State<ProfilePage> {
                         const SizedBox(height: 30),
                         Row(
                           children: <Widget>[
-                            const Text(
+                             Text(
                               "Gender :",
                               style: TextStyle(
-                                  color: Colors.black54,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 16),
+                                  color: Colors.grey.shade600,
+                                  fontFamily: Raleway,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 15),
                             ),
                             const SizedBox(width: 20),
-                            CustomRadio(
+                            CustomRadio(gender: "Male",
                               value: Gender.male,
                               groupValue: _selectedGender,
                               onChanged: (Gender value) {
@@ -158,15 +160,10 @@ class _ProfilePageState extends State<ProfilePage> {
                               },
                               activeColor: DefaultColor.blue
                             ),
-                            const SizedBox(width: 5),
-                            const Text(
-                              'Male',
-                              style: TextStyle(
-                                color: Colors.black54,
-                              ),
-                            ),
+
                             const SizedBox(width: 20),
                             CustomRadio(
+                              gender: "Female",
                               value: Gender.female,
                               groupValue: _selectedGender,
                               onChanged: (Gender value) {
@@ -176,11 +173,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               },
                               activeColor: DefaultColor.blue
                             ),
-                            const SizedBox(width: 5),
-                            const Text(
-                              'Female',
-                              style: TextStyle(color: Colors.black54),
-                            ),
+
                           ],
                         ),
                         const SizedBox(height: 15),
@@ -212,7 +205,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         alignment: Alignment.bottomCenter,
                         child: CustomButton(title: "Submit",
                           margin: const EdgeInsets.symmetric(vertical: 20),
-                          padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.20,vertical: 20),
+                          padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.20,vertical: 19),
                           callback: () {
                           Navigator.pushNamed(context, "/home");
                         },),
@@ -239,7 +232,7 @@ class _ProfilePageState extends State<ProfilePage> {
         children: [
           const Text(
             "Choose Profile Picture",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600,fontFamily: Inter,color: Colors.black87),
           ),
           const SizedBox(
             height: 20,
@@ -253,7 +246,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   Navigator.pop(context);
                 },
                 label: Text("Camera",
-                    style: TextStyle(color: Colors.grey.shade900)),
+                    style: TextStyle(color: Colors.grey.shade900,fontFamily: Inter)),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(
                     Colors.transparent,
@@ -270,7 +263,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   Navigator.pop(context);
                 },
                 label: Text("Gallery",
-                    style: TextStyle(color: Colors.grey.shade900)),
+                    style: TextStyle(color: Colors.grey.shade900,fontFamily: Inter)),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(
                     Colors.transparent,

@@ -1,3 +1,4 @@
+import 'package:astro/utils/Custom_Font.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class MyCartItem extends StatefulWidget {
@@ -59,7 +60,8 @@ class _MyCartItemState extends State<MyCartItem> {
                     children: [
                       Text(widget.title,
                         style: const TextStyle(
-                            fontSize: 22,
+                            fontSize: 20,
+                            fontFamily: ProzaLibre,
                             fontWeight: FontWeight.w600,
                             color: Colors.black),
                       ),
@@ -67,20 +69,23 @@ class _MyCartItemState extends State<MyCartItem> {
                         children: [
                           const Text('Category: ',
                               style: TextStyle(
-                                  fontSize: 14,
+                                  fontSize: 12,
                                   fontWeight:
                                   FontWeight.w600,
+                                  fontFamily: Inter,
                                   color: Colors.black)),
                           Text(widget.category,
                               style: const TextStyle(
-                                  fontSize: 14,
+                                  fontSize: 12,
+                                  fontFamily: Inter,
                                   color: Colors.black54)),
                         ],
                       ),
                       const Spacer(),
                       Text(widget.price,
                         style: const TextStyle(
-                            fontSize: 20,
+                            fontSize:16,
+                            fontFamily: Inter,
                             fontWeight: FontWeight.w600,
                             color: Colors.black),
                       ),
@@ -121,7 +126,7 @@ class _MyCartItemState extends State<MyCartItem> {
                             //color: Colors.yellow,
                             border: Border.all(width: 1,color: Colors.grey)),
                         height: 25,
-                        width: 60,
+                        width: 70,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -132,7 +137,7 @@ class _MyCartItemState extends State<MyCartItem> {
                                 });
                               },
                                 child: const Text("–",style: TextStyle(fontSize: 15),)),
-                            Text(count.toString(),style: TextStyle(fontSize: 15),),
+                            Text(count.toString(),style: const TextStyle(fontSize: 15),),
                             InkWell(
                               onTap: () {
                                 setState(() {

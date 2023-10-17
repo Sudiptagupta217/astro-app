@@ -1,3 +1,4 @@
+import 'package:astro/utils/Custom_Font.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class ShopItemCard extends StatelessWidget {
@@ -62,11 +63,13 @@ class ShopItemCard extends StatelessWidget {
                   Text(name,
                     style: const TextStyle(color: Colors.black,
                         fontSize: 18,
-                        fontWeight: FontWeight.w600),),
+                        fontFamily: ProzaLibre,
+                        fontWeight: FontWeight.bold),),
                   Text(type,
-                    style: const TextStyle(
-                        color: Colors.black54,
-                        fontSize: 15),),
+                    style:  TextStyle(
+                        color: Colors.grey.shade500,
+                        fontFamily: Lato,
+                        fontSize: 12),),
                   const SizedBox(height: 10),
                   Row(
                     children: [
@@ -74,15 +77,27 @@ class ShopItemCard extends StatelessWidget {
                         newPrice,
                         style: const TextStyle(
                             color: Colors.black,
-                            fontSize: 18,
+                            fontSize: 15,
+                            fontFamily: Inter,
                             fontWeight: FontWeight
                                 .w600),),
                       const SizedBox(width: 5),
-                      Text(
-                        oldPrice,
-                        style: const TextStyle(
-                            color: Colors.black54,
-                            fontSize: 10),),
+                      Stack(
+                        children:[
+                          Text(
+                            oldPrice,
+                            style: const TextStyle(
+                                color: Colors.black54,
+                                fontFamily: Inter,
+                                fontSize: 9),),
+                          const Positioned(
+                              top: 1,
+                              bottom: 0,
+                              left: 0,
+                              right: 0,
+                              child:  Divider(color: Colors.black,height: 4,))
+                        ]
+                      ),
                     ],
                   )
 

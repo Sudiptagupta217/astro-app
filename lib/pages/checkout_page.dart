@@ -1,3 +1,4 @@
+import 'package:astro/utils/Custom_Font.dart';
 import 'package:astro/widget/custom_button.dart';
 import 'package:astro/utils/default_colors.dart';
 import 'package:astro/widget/delivery_address_card.dart';
@@ -70,7 +71,7 @@ class CheckOutState extends State<CheckOut> {
                       const Text(
                         "Delivery Address",
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w600),
+                            fontSize: 18,fontFamily: Inter, fontWeight: FontWeight.w600),
                       ),
                       const SizedBox(height: 10),
 
@@ -81,7 +82,7 @@ class CheckOutState extends State<CheckOut> {
                       const Text(
                         "Payment Method",
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w600),
+                            fontSize: 18,fontFamily: Inter, fontWeight: FontWeight.w600),
                       ),
                       const SizedBox(height: 10),
 
@@ -93,9 +94,9 @@ class CheckOutState extends State<CheckOut> {
 
                       const Row(
                         children: [
-                          Text("Total",style: TextStyle(fontSize: 16,color: Colors.black54),),
+                          Text("Total",style: TextStyle(fontSize: 14,color: Colors.black54,fontFamily: Inter,),),
                           Spacer(),
-                          Text("Rs.3,580",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600,color: Colors.black),),
+                          Text("Rs.3,580",style: TextStyle(fontSize: 20,fontFamily: Inter,fontWeight: FontWeight.w600,color: Colors.black),),
 
                         ],
                       ),
@@ -105,7 +106,7 @@ class CheckOutState extends State<CheckOut> {
                     CustomButton(title: "Pay Now",
                       padding: EdgeInsets.symmetric(
                           horizontal: MediaQuery.of(context).size.width * 0.22,
-                          vertical: 20),
+                          vertical: 19),
                       foregroundColor: DefaultColor.white,
                       backgroundColor: DefaultColor.blue,
                       callback: (){

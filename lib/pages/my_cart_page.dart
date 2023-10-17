@@ -1,3 +1,4 @@
+import 'package:astro/utils/Custom_Font.dart';
 import 'package:astro/widget/custom_button.dart';
 import 'package:astro/utils/default_colors.dart';
 import 'package:flutter/material.dart';
@@ -97,13 +98,14 @@ class MyCartState extends State<MyCart> {
                       children: [
                         Text(
                           "Sab Total",
-                          style: TextStyle(fontSize: 16, color: Colors.black54),
+                          style: TextStyle(fontSize: 14,fontFamily: Inter, color: Colors.black54),
                         ),
                         Spacer(),
                         Text(
                           "Rs.3,500",
                           style: TextStyle(
                               fontSize: 20,
+                              fontFamily: Inter,
                               fontWeight: FontWeight.w600,
                               color: Colors.black),
                         ),
@@ -116,13 +118,13 @@ class MyCartState extends State<MyCart> {
                       children: [
                         Text(
                           "Shipping",
-                          style: TextStyle(fontSize: 16, color: Colors.black54),
+                          style: TextStyle(fontSize: 14, fontFamily: Inter,color: Colors.black54),
                         ),
                         Spacer(),
                         Text(
                           "Rs.80",
                           style: TextStyle(
-                              fontSize: 20,
+                              fontSize: 20,fontFamily: Inter,
                               fontWeight: FontWeight.w600,
                               color: Colors.black),
                         ),
@@ -142,13 +144,13 @@ class MyCartState extends State<MyCart> {
                       children: [
                         Text(
                           "Total",
-                          style: TextStyle(fontSize: 16, color: Colors.black54),
+                          style: TextStyle(fontSize: 14,fontFamily: Inter, color: Colors.black54),
                         ),
                         Spacer(),
                         Text(
                           "Rs.3,580",
                           style: TextStyle(
-                              fontSize: 20,
+                              fontSize: 20,fontFamily: Inter,
                               fontWeight: FontWeight.w600,
                               color: Colors.black),
                         ),
@@ -164,7 +166,7 @@ class MyCartState extends State<MyCart> {
                         padding: EdgeInsets.symmetric(
                             horizontal:
                                 MediaQuery.of(context).size.width * 0.15,
-                            vertical: 20),
+                            vertical: 19),
                         callback: () {
                           Navigator.pushNamed(context, "/checkout");
                         })

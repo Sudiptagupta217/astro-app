@@ -1,6 +1,7 @@
 import 'package:astro/utils/default_colors.dart';
 import 'package:astro/widget/custom_button.dart';
 import 'package:flutter/material.dart';
+import '../utils/Custom_Font.dart';
 import '../widget/custom2_form_filed.dart';
 
 class KundaliPlace extends StatefulWidget {
@@ -69,7 +70,7 @@ class KundaliPlaceState extends State<KundaliPlace> {
                     padding: EdgeInsets.only(left: 5.0,top: 10),
                     child: Text(
                       "Enter Your Birth Place",
-                      style: TextStyle(fontSize: 17, color: Colors.black,fontWeight: FontWeight.w600),
+                      style: TextStyle(fontSize: 17,fontFamily: Raleway, color: Colors.black,fontWeight: FontWeight.w600),
                     ),
                   ),
                   const SizedBox(height: 10,),
@@ -83,7 +84,7 @@ class KundaliPlaceState extends State<KundaliPlace> {
                      foregroundColor:DefaultColor.black,
                      padding: EdgeInsets.symmetric( horizontal:
                  MediaQuery.of(context).size.width * 0.22,
-                     vertical: 20), callback: (){ Navigator.pushNamed(context, "/home");})
+                     vertical: 19), callback: (){ Navigator.pushNamed(context, "/home");})
 
                 ],
               ),

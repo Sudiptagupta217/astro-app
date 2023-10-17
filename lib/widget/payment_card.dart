@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../utils/Custom_Font.dart';
+
 class PaymentCard extends StatefulWidget {
   final String image;
   final String text1;
@@ -38,11 +40,11 @@ class _PaymentCardState extends State<PaymentCard> {
             children: [
               Text(widget.text1,
                 style: const TextStyle(
-                    fontSize: 16,
+                    fontSize: 16, fontFamily: Poppins,
                     fontWeight: FontWeight.w500),
               ),
               Text(widget.text2,
-                style: const TextStyle(color: Colors.black54,fontSize: 12),
+                style: const TextStyle(color: Colors.black54, fontFamily: Poppins,fontSize: 12),
               ),
             ],
           ),

@@ -1,3 +1,4 @@
+import 'package:astro/utils/Custom_Font.dart';
 import 'package:flutter/material.dart';
 
 import '../pages/horoscope_details.dart';
@@ -56,7 +57,7 @@ class HoroscopeNameCard extends StatelessWidget {
                   name,
                   style: TextStyle(
                       color: Colors.black,
-                      fontSize: 16,
+                      fontSize: 16,fontFamily: Lato,
                       fontWeight: FontWeight.w700),
                 ))
           ],

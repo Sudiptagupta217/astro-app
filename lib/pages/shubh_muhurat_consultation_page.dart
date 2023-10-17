@@ -3,6 +3,8 @@ import 'package:astro/widget/custom2_form_filed.dart';
 import 'package:astro/widget/custom_button.dart';
 import 'package:flutter/material.dart';
 
+import '../utils/Custom_Font.dart';
+
 class ShubhMuhurat extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => ShubhMuhuratState();
@@ -70,7 +72,7 @@ class ShubhMuhuratState extends State<ShubhMuhurat> {
                         children: [
                           const Text("Enter Date & Location to find Muhurat in Panchang",
                               style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w600)),
+                                  fontSize: 20,fontFamily: Raleway, fontWeight: FontWeight.w600)),
                           const SizedBox(
                             height: 15,
                           ),
@@ -89,7 +91,7 @@ class ShubhMuhuratState extends State<ShubhMuhurat> {
                            padding: EdgeInsets.symmetric( horizontal:
                          MediaQuery.of(context).size.width *
                              0.21,
-                             vertical: 20), callback: () {
+                             vertical: 19), callback: () {
                            Navigator.pushNamed(context, "/shubhmuhuratdetails");
                              },)
                         ],
@@ -104,7 +106,7 @@ class ShubhMuhuratState extends State<ShubhMuhurat> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(" Shubh Muhurat Today",style: TextStyle(fontSize: 17,fontWeight: FontWeight.w600),),
+                            const Text(" Shubh Muhurat Today",style: TextStyle(fontSize: 17,fontFamily: Raleway,fontWeight: FontWeight.w600),),
 
                             Padding(
                               padding: const EdgeInsets.only(top: 8.0,bottom: 8,right: 8),
@@ -119,11 +121,11 @@ class ShubhMuhuratState extends State<ShubhMuhurat> {
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        Text("Monday, 24  April 2023",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: Color(0xFF341A9D)),),
+                                        Text("Monday, 24  April 2023",style: TextStyle(fontSize: 16,fontFamily: Inter,fontWeight: FontWeight.w600,color: Color(0xFF341A9D)),),
                                         SizedBox(height: 10,),
-                                        Text("Abhijit Muhurat",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: Colors.black),),
+                                        Text("Abhijit Muhurat",style: TextStyle(fontSize: 16,fontFamily: Inter,fontWeight: FontWeight.w600,color: Colors.black),),
                                         SizedBox(height: 3,),
-                                        Text("11:37:00 AM to 12:27:00 PM",style: TextStyle(fontSize: 14,color:Colors.black54),),
+                                        Text("11:37:00 AM to 12:27:00 PM",style: TextStyle(fontSize: 14,fontFamily: Inter,color:Colors.black54),),
                                       ],
                                     ),
                                   )
@@ -138,9 +140,9 @@ class ShubhMuhuratState extends State<ShubhMuhurat> {
                       child: const Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Muhurat in Panchang",style: TextStyle(fontSize: 17,fontWeight: FontWeight.w600),),
+                          Text("Muhurat in Panchang",style: TextStyle(fontSize: 17,fontFamily: Raleway,fontWeight: FontWeight.w600),),
                           SizedBox(height: 5,),
-                          Text("Shubh Muhurat, or auspicious time, in Panchang is that time duration in which planets and constellations shower good or fruitful results for the native. There are thirty auspicious moments in a single day during which a native should begin an important task in order to yield successful results. The purpose of pertaining to Shubh Muhurat is to attain meaningful outcomes of important events. In simple words, beginning any auspicious activity only during the suggested auspicious time is known as Muhurat.",style: TextStyle(fontSize: 14,color:Colors.black54),),
+                          Text("Shubh Muhurat, or auspicious time, in Panchang is that time duration in which planets and constellations shower good or fruitful results for the native. There are thirty auspicious moments in a single day during which a native should begin an important task in order to yield successful results. The purpose of pertaining to Shubh Muhurat is to attain meaningful outcomes of important events. In simple words, beginning any auspicious activity only during the suggested auspicious time is known as Muhurat.",style: TextStyle(fontSize: 14,fontFamily: Raleway,color:Colors.black54),),
                         ],
                       ),
                     )

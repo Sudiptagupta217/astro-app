@@ -1,3 +1,4 @@
+import 'package:astro/utils/Custom_Font.dart';
 import 'package:astro/widget/custom_button.dart';
 import 'package:astro/utils/default_colors.dart';
 import 'package:flutter/material.dart';
@@ -78,10 +79,7 @@ class PayState extends State<Pay> {
                 ),
               ),
               Container(
-                  width: MediaQuery
-                      .of(context)
-                      .size
-                      .width,
+                  width: MediaQuery.of(context).size.width,
                   margin: const EdgeInsets.only(top: 30),
                   padding: const EdgeInsets.only(top: 30,),
                   decoration: const BoxDecoration(
@@ -97,7 +95,9 @@ class PayState extends State<Pay> {
                         child: Text(
                           "From",
                           style: TextStyle(
-                              fontSize: 19, fontWeight: FontWeight.w600),
+                              fontSize: 19,
+                              fontFamily: Raleway,
+                              fontWeight: FontWeight.w600),
                         ),
                       ),
                       const SizedBox(
@@ -112,7 +112,7 @@ class PayState extends State<Pay> {
                             SizedBox(
                               width: 15,
                             ),
-                            PayFormCard(title: 'Card', value: '..6789',),
+                            PayFormCard(title: 'wallet', value: '..6789',),
 
                           ],
                         ),
@@ -125,7 +125,9 @@ class PayState extends State<Pay> {
                         child: Text(
                           "To",
                           style: TextStyle(
-                              fontSize: 19, fontWeight: FontWeight.w600),
+                              fontSize: 19,
+                              fontFamily: Raleway,
+                              fontWeight: FontWeight.w600),
                         ),
                       ),
                       const SizedBox(
@@ -192,13 +194,15 @@ class PayState extends State<Pay> {
                             Text(
                               "Amounts",
                               style: TextStyle(
-                                  fontSize: 21, fontWeight: FontWeight.w600),
+                                  fontSize: 21,
+                                  fontFamily: Raleway,fontWeight: FontWeight.w600),
                             ),
                             Spacer(),
                             Text(
                               "Available Balance",
                               style: TextStyle(
                                 fontSize: 14,
+                                fontFamily: Raleway
                               ),
                             ),
                             SizedBox(
@@ -208,6 +212,7 @@ class PayState extends State<Pay> {
                               "\$ 9,756.00",
                               style: TextStyle(
                                   fontSize: 14,
+                                  fontFamily: Poppins,
                                   fontWeight: FontWeight.w600,
                                   color: Color(0xff341A9D)),
                             ),
@@ -275,7 +280,7 @@ class PayState extends State<Pay> {
                                 borderSide: const BorderSide(
                                     color: Colors.white, width: 1)),
                             hintText: "Type note to party... ",
-                            hintStyle: const TextStyle(fontSize: 14)
+                            hintStyle: const TextStyle(fontSize: 14,fontFamily: Raleway)
                           ),
                         ),
                       ),
@@ -287,7 +292,7 @@ class PayState extends State<Pay> {
                           children: [
 
                          CustomButton(title: "Send",
-                           padding: const EdgeInsets.symmetric(horizontal: 35,vertical: 11),
+                           padding: const EdgeInsets.symmetric(horizontal: 35,vertical: 10),
                            backgroundColor: DefaultColor.blue,
                            foregroundColor: DefaultColor.white,
                            callback: () {
@@ -297,7 +302,7 @@ class PayState extends State<Pay> {
                             const SizedBox(width: 5,),
 
                             CustomButton(title: "Cancel",
-                              padding: const EdgeInsets.symmetric(horizontal: 25,vertical: 11),
+                              padding: const EdgeInsets.symmetric(horizontal: 25,vertical: 10),
                               backgroundColor: DefaultColor.grey,
                               foregroundColor: const Color(0xff4E4E4E),
                               callback: () {

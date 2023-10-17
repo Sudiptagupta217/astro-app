@@ -95,3 +95,13 @@ flutter:
         - asset: assets/fonts/Inter-Bold.ttf
         - asset: assets/fonts/Inter-Light.ttf
         - asset: assets/fonts/Inter-Regular.ttf
+
+    - family: ProzaLibre
+      fonts:
+        - asset: assets/fonts/ProzaLibre-Bold.ttf
+        - asset: assets/fonts/ProzaLibre-Regular.ttf
+        - asset: assets/fonts/ProzaLibre-SemiBold.ttf
+
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf

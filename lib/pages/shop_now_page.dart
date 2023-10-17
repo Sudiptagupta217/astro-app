@@ -1,3 +1,4 @@
+import 'package:astro/utils/Custom_Font.dart';
 import 'package:flutter/material.dart';
 import '../widget/buttom_manu.dart';
 import '../widget/drawer_manu.dart';
@@ -148,7 +149,8 @@ class ShopNowPageState extends State<ShopNowPage> {
                               style: TextStyle(color: Colors.black,fontWeight: FontWeight.w500,fontSize: 17),
                               // enabled: false,
                               decoration: InputDecoration(
-                                  hintText: "Search",
+                                  hintText: "Search Here",
+                                  hintStyle: TextStyle(color: Color(0xff9C9C9C),fontFamily: Inter,fontSize: 15),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide:
                                     BorderSide(color: Colors.white),
@@ -183,12 +185,14 @@ class ShopNowPageState extends State<ShopNowPage> {
                                 Icon(
                                   Icons.filter_alt_outlined,
                                   color: Color(0xFF341A9D),
-                                  size: 22,
+                                  size: 20,
                                 ),
                                 Text(
                                   "Filter",
                                   style: TextStyle(
                                       color: Color(0xFF341A9D),
+                                      fontFamily: Inter,
+                                      fontSize: 14,
                                       fontWeight: FontWeight.w500),
                                 )
                               ],

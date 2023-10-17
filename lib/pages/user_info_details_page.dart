@@ -1,3 +1,4 @@
+import 'package:astro/utils/Custom_Font.dart';
 import 'package:astro/utils/default_colors.dart';
 import 'package:astro/widget/custom_button.dart';
 import 'package:astro/widget/custom_form_filed.dart';
@@ -63,7 +64,8 @@ class DetailsPageState extends State<DetailsPage> {
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
-                          fontWeight: FontWeight.w500),
+                          fontFamily: Poppins,
+                          fontWeight: FontWeight.w600),
                     )),
 
                 Row(
@@ -72,11 +74,13 @@ class DetailsPageState extends State<DetailsPage> {
                       "Gender :",
                       style: TextStyle(
                           color: Colors.white,
+                          fontFamily: Raleway,
                           fontWeight: FontWeight.w500,
                           fontSize: 16),
                     ),
                     const SizedBox(width: 20),
                     CustomRadio(
+                      gender: "male",
                       value: Gender.male,
                       groupValue: _selectedGender,
                       onChanged: (Gender value) {
@@ -87,15 +91,10 @@ class DetailsPageState extends State<DetailsPage> {
                       activeColor:
                            DefaultColor.yellow,
                     ),
-                    const SizedBox(width: 5),
-                    const Text(
-                      'Male',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
+
                     const SizedBox(width: 20),
                     CustomRadio(
+                      gender: "Female",
                       value: Gender.female,
                       groupValue: _selectedGender,
                       onChanged: (Gender value) {
@@ -105,42 +104,38 @@ class DetailsPageState extends State<DetailsPage> {
                       },
                       activeColor: DefaultColor.yellow,
                     ),
-                    const SizedBox(width: 5),
-                    const Text(
-                      'Female',
-                      style: TextStyle(color: Colors.white),
-                    ),
+
                   ],
                 ),
 
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
 
                CustomFormFiled(controller: firstNameController, hintText: "First Name", keyboardType: TextInputType.text),
 
                 const SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
 
                 CustomFormFiled(controller: lastNameController, hintText: "Last Name", keyboardType: TextInputType.text),
 
                 const SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
 
                 CustomFormFiled(controller: dobController, hintText: "DOB", keyboardType: TextInputType.text),
 
 
                 const SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
 
                 CustomFormFiled(controller: placeNameController,hintText: "Place of Birth", keyboardType: TextInputType.text),
 
                 CustomButton(title: "Submit",
                   margin: const EdgeInsets.only(top: 20),
-                  padding: EdgeInsets.symmetric(vertical: 21,
+                  padding: EdgeInsets.symmetric(vertical: 19,
                       horizontal: MediaQuery.of(context).size.width*0.20),
                   callback: () {
                   Navigator.pushNamed(context, "/home");

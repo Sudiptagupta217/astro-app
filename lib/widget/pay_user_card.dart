@@ -1,3 +1,4 @@
+import 'package:astro/utils/Custom_Font.dart';
 import 'package:flutter/material.dart';
 
 class PayUserCard extends StatelessWidget {
@@ -42,8 +43,9 @@ class PayUserCard extends StatelessWidget {
           ),
           Text(name,
             style: const TextStyle(
-                fontSize: 14,
+                fontSize: 12                                                                                                                                                                                                                                            ,
                 color: Color(0xff2F498C),
+                fontFamily: Inter,
                 fontWeight: FontWeight.w600),
           )
         ],

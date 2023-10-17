@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../utils/Custom_Font.dart';
+
 class HistoryCard extends StatelessWidget {
   final String image;
   final String text;
@@ -33,15 +35,15 @@ class HistoryCard extends StatelessWidget {
                   children: [
                     Text(text,
                       maxLines: 3,
-                      style: const TextStyle(color: Colors.black87,),),
+                      style: const TextStyle(color: Colors.black87,fontSize: 13,fontFamily: Poppins,),),
                     const SizedBox(height: 15,),
                     Row(
                       children: [
                         Text(time,
-                          style: const TextStyle(color: Colors.black54),),
+                          style: const TextStyle(color: Colors.black54,fontSize: 12,fontFamily: Poppins,),),
                         const Spacer(),
                         Text(buttonText,
-                          style: const TextStyle(color: Colors.red,fontSize: 15,fontWeight: FontWeight.w500),),
+                          style: const TextStyle(color: Colors.red,fontFamily: Poppins,fontSize: 13,fontWeight: FontWeight.w500),),
                       ],
                     )
                   ],

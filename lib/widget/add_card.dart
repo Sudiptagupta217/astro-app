@@ -1,3 +1,4 @@
+import 'package:astro/utils/Custom_Font.dart';
 import 'package:flutter/material.dart';
 
 class AddCard extends StatelessWidget {
@@ -21,7 +22,7 @@ class AddCard extends StatelessWidget {
         child: Text(text,
           textAlign: TextAlign.center,
           style: const TextStyle(
-              color: Colors.white,
+              color: Colors.white,fontFamily: Inter,
               fontSize: 15,
               fontWeight: FontWeight.w500),
         ),

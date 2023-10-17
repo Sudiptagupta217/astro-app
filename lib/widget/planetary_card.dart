@@ -1,3 +1,4 @@
+import 'package:astro/utils/Custom_Font.dart';
 import 'package:flutter/material.dart';
 
 class PlanetaryCard extends StatelessWidget {
@@ -38,10 +39,10 @@ class PlanetaryCard extends StatelessWidget {
               child:  Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(titleText,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.w600),),
+                  Text(titleText,style: const TextStyle(fontSize: 19,fontFamily: Raleway,fontWeight: FontWeight.w600),),
                   const SizedBox(height: 10,),
                   Text(bodyText,maxLines: 3,
-                      style: const TextStyle(fontSize: 15)),
+                      style: const TextStyle(fontSize: 14,fontFamily: Poppins,)),
                 ],
               ),
             ),

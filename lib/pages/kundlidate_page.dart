@@ -1,6 +1,7 @@
 import 'package:astro/widget/custom_button.dart';
 import 'package:astro/utils/default_colors.dart';
 import 'package:flutter/material.dart';
+import '../utils/Custom_Font.dart';
 import '../widget/custom2_form_filed.dart';
 
 class KundaliDate extends StatefulWidget {
@@ -70,7 +71,7 @@ class KundaliDateState extends State<KundaliDate> {
                     padding: EdgeInsets.only(left: 5.0,top: 10),
                     child: Text(
                       "Enter Your Birth Date",
-                      style: TextStyle(fontSize: 17, color: Colors.black,fontWeight: FontWeight.w600),
+                      style: TextStyle(fontSize: 17,fontFamily: Raleway, color: Colors.black,fontWeight: FontWeight.w600),
                     ),
                   ),
                   const SizedBox(height: 10,),
@@ -85,7 +86,7 @@ class KundaliDateState extends State<KundaliDate> {
                     foregroundColor: DefaultColor.black,
                     padding: EdgeInsets.symmetric( horizontal:
                 MediaQuery.of(context).size.width * 0.22,
-                    vertical: 20), callback: (){Navigator.pushNamed(context, "/kundalitime");})
+                    vertical: 19), callback: (){Navigator.pushNamed(context, "/kundalitime");})
 
                 ],
               ),

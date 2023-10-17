@@ -1,3 +1,4 @@
+import 'package:astro/utils/Custom_Font.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -36,7 +37,7 @@ class _Custom2FormFiledState extends State<Custom2FormFiled> {
           padding:  EdgeInsets.only(left: 16.0),
           child: widget.title!= null ? Text(
             widget.title.toString(),
-            style: const TextStyle(fontSize: 17, color: Colors.black87),
+            style: const TextStyle(fontSize: 15,fontFamily: Poppins, color: Colors.black87,fontWeight: FontWeight.w500),
           ):Container(),
         ),
         SizedBox(

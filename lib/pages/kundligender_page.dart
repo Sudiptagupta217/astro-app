@@ -228,12 +228,13 @@ class KundaliGenderState extends State<KundaliGender> {
                         title: "Next",
                         foregroundColor: DefaultColor.black,
                         backgroundColor: DefaultColor.yellow,
+                        margin: EdgeInsets.symmetric(vertical: 25),
                         padding: EdgeInsets.symmetric(horizontal:
                       MediaQuery
                           .of(context)
                           .size
                           .width * 0.22,
-                          vertical: 20), callback: () {
+                          vertical: 19), callback: () {
                         Navigator.pushNamed(context, "/kundalidate");
                       },)
                     ],

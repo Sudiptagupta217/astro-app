@@ -1,3 +1,4 @@
+import 'package:astro/utils/Custom_Font.dart';
 import 'package:astro/utils/default_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -76,7 +77,7 @@ class popuralAstroCard extends StatelessWidget {
                           color: Color(
                               0xffffce31),
                         ),
-                        Text(rating)
+                        Text(rating,style: TextStyle(fontFamily: Inter),)
                       ],
                     ),
                   ),
@@ -90,12 +91,12 @@ class popuralAstroCard extends StatelessWidget {
           Text(
             name,
             style: const TextStyle(
-                fontSize: 18,
+                fontSize: 18,fontFamily: Raleway,
                 fontWeight: FontWeight.w700),
           ),
 
           const SizedBox(height: 5,),
-          Text(type,style: const TextStyle(color: Color(0xff545454))),
+          Text(type,style: const TextStyle(color: Color(0xff545454),fontFamily: Raleway)),
 
           const SizedBox(height: 15,),
 
@@ -113,7 +114,7 @@ class popuralAstroCard extends StatelessWidget {
                       size: 15,
                       color: DefaultColor.blue,
                     ),
-                    Text(rate,style: const TextStyle(color: Color(0xff545454)),)
+                    Text(rate,style: const TextStyle(color: Color(0xff9C9C9C),fontFamily: Poppins),)
                   ],
                 ),
               ),
@@ -135,7 +136,7 @@ class popuralAstroCard extends StatelessWidget {
                       "Connect",
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 14,
+                        fontSize: 14,fontFamily: Raleway
                       ),
                     )),
               ),

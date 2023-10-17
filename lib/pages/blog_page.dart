@@ -1,3 +1,4 @@
+import 'package:astro/utils/Custom_Font.dart';
 import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
 
@@ -78,7 +79,7 @@ class BlogState extends State<Blog> {
                       children: [
                         ListView.builder(
                           shrinkWrap: true,
-                          physics: BouncingScrollPhysics(),
+                          physics: const BouncingScrollPhysics(),
                           itemBuilder: (context, index) {
                           return
                             InkWell(
@@ -87,7 +88,7 @@ class BlogState extends State<Blog> {
                               },
                               child: Stack(
                                 children: [
-                                  Container( width: MediaQuery.of(context).size.width, height: 250),
+                                  SizedBox( width: MediaQuery.of(context).size.width, height: 250),
                                   Positioned(
                                     bottom: 50,
                                     left: 15,
@@ -119,8 +120,8 @@ class BlogState extends State<Blog> {
                                               maxLines: 3,
                                               expandText: 'Read more',
                                               collapseText: 'Read less',
-                                              linkStyle:TextStyle(color:Color(0xffF8BD02),),
-                                              style: TextStyle(fontSize: 14,color: Colors.white,height: 1.3,wordSpacing: 1), // specify the text style
+                                              linkStyle:TextStyle(color:Color(0xffF8BD02),fontFamily: Inter,fontSize: 14),
+                                              style: TextStyle(fontSize: 14,color: Colors.white,fontFamily: Inter,height: 1.3,wordSpacing: 1), // specify the text style
                                             ),
                                           )
                                       )

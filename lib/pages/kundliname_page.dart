@@ -1,3 +1,4 @@
+import 'package:astro/utils/Custom_Font.dart';
 import 'package:astro/widget/custom2_form_filed.dart';
 import 'package:astro/widget/custom_button.dart';
 import 'package:astro/utils/default_colors.dart';
@@ -72,9 +73,7 @@ class KundaliNapeState extends State<KundaliName> {
                       borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(50.0),
                       ),
-                      border: Border.all(
-                        color: Colors.transparent,
-                      )
+
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,7 +83,7 @@ class KundaliNapeState extends State<KundaliName> {
                         child: Text(
                           "Enter Your Name",
                           style: TextStyle(fontSize: 17,
-                              color: Colors.black,
+                              color: Colors.black,fontFamily: Raleway,
                               fontWeight: FontWeight.w600),
                         ),
                       ),
@@ -100,12 +99,13 @@ class KundaliNapeState extends State<KundaliName> {
                           title: "Next",
                           backgroundColor: DefaultColor.yellow,
                           foregroundColor: DefaultColor.black,
+                          margin: EdgeInsets.symmetric(vertical: 25),
                           padding: EdgeInsets.symmetric(
                               horizontal: MediaQuery
                                   .of(context)
                                   .size
                                   .width * 0.22,
-                              vertical: 20),
+                              vertical: 19),
                           callback: () {
                             Navigator.pushNamed(context, "/kundaligenderi");
                           })

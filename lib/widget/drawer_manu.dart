@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../utils/Custom_Font.dart';
+
 class DrawerManu extends StatefulWidget {
   @override
   State<DrawerManu> createState() => _DrawerManuState();
@@ -55,15 +57,15 @@ class _DrawerManuState extends State<DrawerManu> {
                       children: [
                         Text(
                           "Tara",
-                          style: TextStyle(fontSize: 24, color: Colors.white),
+                          style: TextStyle(fontSize: 24, color: Colors.white,fontWeight: FontWeight.bold,fontFamily: Poppins),
                         ),
                         Text(
                           "johndoe@gmail.com",
-                          style: TextStyle(fontSize: 11, color: Colors.white),
+                          style: TextStyle(fontSize: 11, color: Color(0xffE1E1E1),fontFamily: Lato,),
                         ),
                         Text(
                           "9991112223",
-                          style: TextStyle(fontSize: 11, color: Colors.white),
+                          style: TextStyle(fontSize: 11, color: Color(0xffE1E1E1),fontFamily: Lato,),
                         ),
                       ],
                     ),
@@ -73,16 +75,32 @@ class _DrawerManuState extends State<DrawerManu> {
                     onTap: () {
                       _navigateAndCloseDrawer('/notification');
                     },
-                    child: const Stack(
-                      children: [
-                        Align(
-                            alignment: AlignmentDirectional.centerEnd,
-                            child: Icon(
-                              Icons.notifications_outlined,
-                              color: Color(_whitePrimaryValue),
-                            ))
-                      ],
-                    ),
+                    child: Align(
+                        alignment: AlignmentDirectional.centerEnd,
+                        child:   Stack(children: [
+                          const Icon(
+                            Icons.notifications_none,
+                            color: Colors.white,
+                          ),
+                          Positioned(
+                              top: 0,
+                              right: 0,
+                              child: Container(
+                                height: 10,
+                                width: 10,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: Colors.green,
+                                ),
+                                child: const Center(
+                                    child: Text(
+                                      "1",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 9),
+                                    )),
+                              )),
+
+                        ]),),
                   )
                 ],
               ),
@@ -93,7 +111,7 @@ class _DrawerManuState extends State<DrawerManu> {
               padding: EdgeInsets.only(left: 25),
               child: Text('Chat with Astrologer',
                   style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16,fontFamily: Poppins,
                       fontWeight: FontWeight.w500,
                       color: Color(_whitePrimaryValue))),
             ),
@@ -106,7 +124,7 @@ class _DrawerManuState extends State<DrawerManu> {
               padding: EdgeInsets.only(left: 25),
               child: Text('Call Your Astrologer',
                   style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16,fontFamily:  Poppins,
                       fontWeight: FontWeight.w500,
                       color: Color(_whitePrimaryValue))),
             ),
@@ -119,7 +137,7 @@ class _DrawerManuState extends State<DrawerManu> {
               padding: EdgeInsets.only(left: 25),
               child: Text('Free Kundli',
                   style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16,fontFamily: Poppins,
                       fontWeight: FontWeight.w500,
                       color: Color(_whitePrimaryValue))),
             ),
@@ -132,7 +150,7 @@ class _DrawerManuState extends State<DrawerManu> {
               padding: EdgeInsets.only(left: 25),
               child: Text('History',
                   style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16,fontFamily: Poppins,
                       fontWeight: FontWeight.w500,
                       color: Color(_whitePrimaryValue))),
             ),
@@ -145,7 +163,7 @@ class _DrawerManuState extends State<DrawerManu> {
               padding: EdgeInsets.only(left: 25),
               child: Text('Detailed Report',
                   style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16,fontFamily: Poppins,
                       fontWeight: FontWeight.w500,
                       color: Color(_whitePrimaryValue))),
             ),
@@ -158,7 +176,7 @@ class _DrawerManuState extends State<DrawerManu> {
               padding: EdgeInsets.only(left: 25),
               child: Text('Planetary Transit',
                   style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16,fontFamily: Poppins,
                       fontWeight: FontWeight.w500,
                       color: Color(_whitePrimaryValue))),
             ),
@@ -171,7 +189,7 @@ class _DrawerManuState extends State<DrawerManu> {
               padding: EdgeInsets.only(left: 25),
               child: Text('Settings',
                   style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16,fontFamily: Poppins,
                       fontWeight: FontWeight.w500,
                       color: Color(_whitePrimaryValue))),
             ),
@@ -184,7 +202,7 @@ class _DrawerManuState extends State<DrawerManu> {
               padding: EdgeInsets.only(left: 25),
               child: Text('About Us',
                   style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16,fontFamily: Poppins,
                       fontWeight: FontWeight.w500,
                       color: Color(_whitePrimaryValue))),
             ),
@@ -197,7 +215,7 @@ class _DrawerManuState extends State<DrawerManu> {
               padding: EdgeInsets.only(left: 25),
               child: Text('Contact Us',
                   style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16,fontFamily: Poppins,
                       fontWeight: FontWeight.w500,
                       color: Color(_whitePrimaryValue))),
             ),
@@ -210,7 +228,7 @@ class _DrawerManuState extends State<DrawerManu> {
               padding: EdgeInsets.only(left: 25),
               child: Text('Register As Astrologer',
                   style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16,fontFamily: Poppins,
                       fontWeight: FontWeight.w500,
                       color: Color(_whitePrimaryValue))),
             ),
@@ -222,7 +240,7 @@ class _DrawerManuState extends State<DrawerManu> {
             padding: EdgeInsets.only(left: 40, top: 40),
             child: Text('Follow Us',
                 style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 16,fontFamily: Poppins,
                     fontWeight: FontWeight.w500,
                     color: Color(_whitePrimaryValue))),
           ),
@@ -274,8 +292,8 @@ class _DrawerManuState extends State<DrawerManu> {
               leading: const FaIcon(FontAwesomeIcons.signOut,color: Colors.white,),
               title: const Text('LOGOUT',
                   style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
+                      fontSize: 20,fontFamily: Poppins,
+                      fontWeight: FontWeight.w600,
                       color: Color(_whitePrimaryValue))),
               onTap: () {
                 _navigateAndCloseDrawer("/home");

@@ -1,3 +1,4 @@
+import 'package:astro/utils/Custom_Font.dart';
 import 'package:flutter/material.dart';
 
 class VideoListItem extends StatelessWidget {
@@ -40,7 +41,7 @@ class VideoListItem extends StatelessWidget {
                   child: SizedBox(
                     height: 100,
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.symmetric(vertical: 5.0,horizontal: 8),
                       child: Column(
                         crossAxisAlignment:
                         CrossAxisAlignment.start,
@@ -50,19 +51,20 @@ class VideoListItem extends StatelessWidget {
                             overflow: TextOverflow.clip,
                             style: const TextStyle(
                                 fontWeight: FontWeight.w600,
+                                fontFamily: Lato,
                                 fontSize: 16),
                           ),
                           Text(description,
                             maxLines: 2,
                             overflow: TextOverflow.clip,
                             style: const TextStyle(
-                                fontSize: 12,
+                                fontSize: 12,fontFamily: Lato,
                                 color: Colors.black54),
                           ),
                           const Spacer(),
                           Text(time,
                             style: const TextStyle(
-                                fontSize: 14,
+                                fontSize: 12,fontFamily: Lato,
                                 color: Colors.black54),
                           ),
                         ],

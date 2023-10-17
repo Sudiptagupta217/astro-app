@@ -1,3 +1,4 @@
+import 'package:astro/utils/Custom_Font.dart';
 import 'package:flutter/material.dart';
 
 class AstroCard extends StatefulWidget {
@@ -88,7 +89,7 @@ class _AstroCardState extends State<AstroCard> {
                                 color: Color(
                                     0xffffce31),
                               ),
-                              Text(widget.rate)
+                              Text(widget.rate,style: TextStyle(fontFamily: Inter)                      ,)
                             ],
                           ),
                         ),
@@ -100,17 +101,19 @@ class _AstroCardState extends State<AstroCard> {
               ),
 
               Container(
-                width: MediaQuery.of(context).size.width * 0.43,
+                width: MediaQuery.of(context).size.width * 0.49,
                 margin: const EdgeInsets.only(left: 10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 7,),
+
                     Row(
                       children: [
                         Text(widget.name, style: const TextStyle(
                             fontWeight: FontWeight.w700,
+                            fontFamily: Raleway,
                             fontSize: 22
                         ),)
                       ],
@@ -124,13 +127,15 @@ class _AstroCardState extends State<AstroCard> {
                         Image.asset("assets/images/horo.png"),
                         Text(widget.astroType, style: const TextStyle(
                             color: Color(0xFF616161),
-                            fontSize: 14,
+                            fontSize: 12,
+                            fontFamily: Poppins,
                             fontWeight: FontWeight.w400
                         ),),
-                        const Text("+7 more", style: TextStyle(
+                        const Text(" more", style: TextStyle(
                             color: Color(0xFF000000),
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400
+                            fontSize: 12,
+                            fontFamily: Poppins,
+                            fontWeight: FontWeight.w500
                         ),)
                       ],
                     ),
@@ -143,7 +148,7 @@ class _AstroCardState extends State<AstroCard> {
                         const SizedBox(width: 4,),
                         Text(widget.languageKnown, style: const TextStyle(
                             color: Color(0xFF616161),
-                            fontSize: 14,
+                            fontSize: 12,fontFamily: Poppins,
                             fontWeight: FontWeight.w400
                         ),),
 
@@ -158,7 +163,7 @@ class _AstroCardState extends State<AstroCard> {
                         const SizedBox(width: 4,),
                         Text(widget.experience, style: const TextStyle(
                             color: Color(0xFF616161),
-                            fontSize: 14,
+                            fontSize: 12,fontFamily: Poppins,
                             fontWeight: FontWeight.w400
                         ),),
                       ],
@@ -174,7 +179,7 @@ class _AstroCardState extends State<AstroCard> {
                         const SizedBox(width: 5,),
                         Text(widget.price, style: const TextStyle(
                             color: Color(0xFF030303),
-                            fontSize: 14,
+                            fontSize: 13,fontFamily: Lato,
                             fontWeight: FontWeight.w600
                         ),),
 
@@ -190,12 +195,12 @@ class _AstroCardState extends State<AstroCard> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50),
                               ),
-                              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 8),
+                              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                               elevation: 2,
                               foregroundColor: Colors.white,
                               backgroundColor: Color(0xFF0341A9)
                           ),
-                          child: Text(widget.buttonText),
+                          child: Text(widget.buttonText,style: TextStyle(fontFamily: Raleway,),),
                         ),
                       ],
                     )
